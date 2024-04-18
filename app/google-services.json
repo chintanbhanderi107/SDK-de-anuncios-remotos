@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "758100317088",
+    "project_id": "ads-sdk-demo",
+    "storage_bucket": "ads-sdk-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758100317088:android:9a794241e1c8d4964b0ac5",
+        "android_client_info": {
+          "package_name": "com.custom.ads.sdk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdflLGWvuffCK1gB7THoH6jDq--Pp6l_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758100317088:android:a5976b66ece0c1804b0ac5",
+        "android_client_info": {
+          "package_name": "com.example.ads.sdk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdflLGWvuffCK1gB7THoH6jDq--Pp6l_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

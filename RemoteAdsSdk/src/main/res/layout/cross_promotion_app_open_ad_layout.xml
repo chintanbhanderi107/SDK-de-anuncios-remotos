@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <RelativeLayout
+        android:id="@+id/adTopLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_38sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@drawable/cross_app_open_ad_layout_bg"
+        android:paddingVertical="@dimen/_3sdp">
+
+        <ImageView
+            android:id="@+id/imgAdIcon"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:adjustViewBounds="true"
+            android:clickable="false"
+            android:padding="@dimen/_5sdp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/textAdName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_toEndOf="@id/imgAdIcon"
+            android:clickable="false"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp" />
+
+        <TextView
+            android:id="@+id/textContinueToApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_toStartOf="@id/imgAdClose"
+            android:alpha="0.8"
+            android:clickable="false"
+            android:text="continue to app"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp" />
+
+        <ImageView
+            android:id="@+id/imgAdClose"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:adjustViewBounds="true"
+            android:clickable="false"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/round_arrow_forward_ios_24" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/adBottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/adTopLayout"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/cross_app_open_ad_bottom_layout_bg">
+
+        <LinearLayout
+            android:id="@+id/layoutAdText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="@drawable/cross_ad_app_open_text_bg"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textAdTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginVertical="@dimen/_3sdp"
+                android:text="Advertisement"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layoutAdText"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgAdMedia"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/_10sdp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnAdCallToAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="@dimen/_42sdp"
+            android:layout_marginBottom="@dimen/_24sdp"
+            android:text="Install"
+            android:textSize="@dimen/_10ssp"
+            android:visibility="gone" />
+    </RelativeLayout>
+</RelativeLayout>
