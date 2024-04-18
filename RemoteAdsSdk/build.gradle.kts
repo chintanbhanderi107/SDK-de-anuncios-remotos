@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.library)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.googleServices)
+    id("maven-publish")
 }
 
 android {
@@ -35,6 +36,16 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+    }
+}
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
     }
 }
 
