@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Remote Ads Sdk"
-include(":app",":RemoteAdsSdk")
+include(":RemoteAdsSdkExample",":RemoteAdsSdk")
