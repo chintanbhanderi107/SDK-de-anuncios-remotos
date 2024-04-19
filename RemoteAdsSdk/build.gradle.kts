@@ -39,11 +39,14 @@ android {
     }
 }
 
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            afterEvaluate {
-                from(components["release"])
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                from (components["release"])
+                groupId = "com.github.chintanbhanderi107"
+                artifactId = "SDK-de-anuncios-remotos"
+                version = "1.0.4"
             }
         }
     }
