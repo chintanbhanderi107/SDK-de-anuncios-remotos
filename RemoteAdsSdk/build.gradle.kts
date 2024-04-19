@@ -46,7 +46,7 @@ afterEvaluate {
                 from (components["release"])
                 groupId = "com.github.chintanbhanderi107"
                 artifactId = "SDK-de-anuncios-remotos"
-                version = "1.0.4"
+                version = "1.0.5"
             }
         }
     }
