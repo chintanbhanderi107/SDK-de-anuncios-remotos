@@ -17,7 +17,6 @@
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        tools:replace="android:theme"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity3"
@@ -37,8 +36,7 @@
 
         <property
             android:name="android.adservices.AD_SERVICES_CONFIG"
-            android:resource="@xml/gma_ad_services_config"
-            tools:replace="android:resource" />
+            android:resource="@xml/gma_ad_services_config" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
