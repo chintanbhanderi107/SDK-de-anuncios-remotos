@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 
-class AdsApplication : Application() {
+open class AdsApplication : Application() {
     private val adsPreferencesKey: String = "Ads_Preference"
 
     override fun onCreate() {
