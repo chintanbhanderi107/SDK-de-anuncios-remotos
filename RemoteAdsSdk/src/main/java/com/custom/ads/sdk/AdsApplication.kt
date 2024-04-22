@@ -163,29 +163,5 @@ class AdsApplication : Application() {
         fun isPremium(): Boolean {
             return adsSharedPreferences?.getBoolean("is_premium", false) ?: false
         }
-
-        fun setMainScreenBannerFrequency(mainScreenFrequency: Int) {
-            adsEditor?.putInt("main_screen_banner_frequency", mainScreenFrequency)?.apply()
-        }
-
-        fun getMainScreenBannerFrequency(): Int {
-            return adsSharedPreferences?.getInt("main_screen_banner_frequency", 0) ?: 0
-        }
-
-        fun setMainScreenFrequency(mainScreenFrequency: Int) {
-            adsEditor?.putInt("main_screen_frequency", mainScreenFrequency)?.apply()
-        }
-
-        fun getMainScreenFrequency(): Int {
-            return adsSharedPreferences?.getInt("main_screen_frequency", 0) ?: 0
-        }
-
-        fun setMainScreen3Frequency(mainScreenFrequency3: Int) {
-            adsEditor?.putInt("main_screen_frequency_3", mainScreenFrequency3)?.apply()
-        }
-
-        fun getMainScreen3Frequency(): Int {
-            return adsSharedPreferences?.getInt("main_screen_frequency_3", 0) ?: 0
-        }
     }
 }

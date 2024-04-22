@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.library)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    alias(libs.plugins.googleServices)
     id("maven-publish")
 }
 

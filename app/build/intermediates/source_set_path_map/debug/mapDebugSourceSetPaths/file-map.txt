@@ -1,0 +1,51 @@
+com.example.ads.myapplication.app-play-services-basement-18.3.0-0 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\03c2792384a7bc937f58c613c25e9f05\transformed\play-services-basement-18.3.0\res
+com.example.ads.myapplication.app-transition-1.2.0-1 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\07520ec8e2eb857aeac1dabe877605a1\transformed\transition-1.2.0\res
+com.example.ads.myapplication.app-shimmer-0.5.0-2 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\0b2d1d3a4d71c966422e283621d54bd7\transformed\shimmer-0.5.0\res
+com.example.ads.myapplication.app-emoji2-views-helper-1.2.0-3 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\0f0835ad6485a4a5a3025c687593df9a\transformed\emoji2-views-helper-1.2.0\res
+com.example.ads.myapplication.app-viewpager2-1.0.0-4 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\0f257ed4cfedee2caf7cbea0889c7b82\transformed\viewpager2-1.0.0\res
+com.example.ads.myapplication.app-profileinstaller-1.3.0-5 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\10b4388f999ff298eb4a90b738e642ea\transformed\profileinstaller-1.3.0\res
+com.example.ads.myapplication.app-constraintlayout-2.1.4-6 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\16337207fb6eb3cfa084c82e3601ea04\transformed\constraintlayout-2.1.4\res
+com.example.ads.myapplication.app-annotation-experimental-1.3.0-7 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\1cd298b358286049f623995122e1c263\transformed\annotation-experimental-1.3.0\res
+com.example.ads.myapplication.app-material-1.11.0-8 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\26024b0697f22a00388cb68bb7c76cd3\transformed\material-1.11.0\res
+com.example.ads.myapplication.app-play-services-base-18.0.0-9 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\2971b7a03562b1a6b7f53fab36d83273\transformed\play-services-base-18.0.0\res
+com.example.ads.myapplication.app-emoji2-1.2.0-10 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\2e8748ee67e87f873aa4660ba110aff3\transformed\emoji2-1.2.0\res
+com.example.ads.myapplication.app-core-runtime-2.2.0-11 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\47c7f9364e8a95d186f0847300db6f07\transformed\core-runtime-2.2.0\res
+com.example.ads.myapplication.app-lifecycle-livedata-2.6.1-12 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\67bf715841925ccd34f0f9d611ff15e0\transformed\lifecycle-livedata-2.6.1\res
+com.example.ads.myapplication.app-recyclerview-1.1.0-13 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\697b84d04b3e931d70e6ff9462553a1f\transformed\recyclerview-1.1.0\res
+com.example.ads.myapplication.app-appcompat-1.6.1-14 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\71383cd5b8a656c121b0aa4c409e9d3d\transformed\appcompat-1.6.1\res
+com.example.ads.myapplication.app-lifecycle-livedata-core-2.6.1-15 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\71e51e0a98a169d35ac0110b95927bd6\transformed\lifecycle-livedata-core-2.6.1\res
+com.example.ads.myapplication.app-activity-1.8.0-16 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\7365256e025f225382ee88d796b633ca\transformed\activity-1.8.0\res
+com.example.ads.myapplication.app-glide-4.16.0-17 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\7598ba911f53ee286d02001a924ad9f1\transformed\glide-4.16.0\res
+com.example.ads.myapplication.app-lifecycle-process-2.6.1-18 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\8634ecbf1d42a36f5032a0455619043c\transformed\lifecycle-process-2.6.1\res
+com.example.ads.myapplication.app-sdp-android-1.1.1-19 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\86dbf7b5d7ec0d498010ff6150480cac\transformed\sdp-android-1.1.1\res
+com.example.ads.myapplication.app-work-runtime-2.7.0-20 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\8c3e7be527ccef0e29ae868e35a2f770\transformed\work-runtime-2.7.0\res
+com.example.ads.myapplication.app-coordinatorlayout-1.1.0-21 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\8d5115d44938c67e899c256267a7bfc4\transformed\coordinatorlayout-1.1.0\res
+com.example.ads.myapplication.app-ads-adservices-java-1.0.0-beta05-22 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\8f5e73be70c8ee9fe69fcf1b48f7683d\transformed\ads-adservices-java-1.0.0-beta05\res
+com.example.ads.myapplication.app-play-services-ads-23.0.0-23 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\979f333027d42f3d24d6b43926d31708\transformed\play-services-ads-23.0.0\res
+com.example.ads.myapplication.app-ssp-android-1.1.1-24 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\9df604643471aa942a83794ee3009c1f\transformed\ssp-android-1.1.1\res
+com.example.ads.myapplication.app-lifecycle-viewmodel-savedstate-2.6.1-25 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\a38d345c4e27aa98c9fb19f0936a620c\transformed\lifecycle-viewmodel-savedstate-2.6.1\res
+com.example.ads.myapplication.app-appcompat-resources-1.6.1-26 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\a64cfbff7ae1aec5b0e28407a0d6edb3\transformed\appcompat-resources-1.6.1\res
+com.example.ads.myapplication.app-savedstate-1.2.1-27 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\a8697e3bc9f6a159dc9ec1e07cb3f67d\transformed\savedstate-1.2.1\res
+com.example.ads.myapplication.app-lifecycle-service-2.6.1-28 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\aef569abc23bb2bdd8b5574a3f25fda7\transformed\lifecycle-service-2.6.1\res
+com.example.ads.myapplication.app-firebase-common-20.4.3-29 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\af7436127a7d3fc3037344135d563a37\transformed\firebase-common-20.4.3\res
+com.example.ads.myapplication.app-ads-adservices-1.0.0-beta05-30 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\bf440d0b3a9ac89935fe204145ddb024\transformed\ads-adservices-1.0.0-beta05\res
+com.example.ads.myapplication.app-fragment-1.3.6-31 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\c172513b5e99a709cdd57bb80b0494ca\transformed\fragment-1.3.6\res
+com.example.ads.myapplication.app-lifecycle-runtime-2.6.1-32 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\c68d621f11a392380976194adf7d718f\transformed\lifecycle-runtime-2.6.1\res
+com.example.ads.myapplication.app-startup-runtime-1.1.1-33 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\d455251f1f2baf6478275e530d4d9192\transformed\startup-runtime-1.1.1\res
+com.example.ads.myapplication.app-play-services-ads-lite-23.0.0-34 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\deaa5a587a586e3d0ce7e0d302198ad7\transformed\play-services-ads-lite-23.0.0\res
+com.example.ads.myapplication.app-cardview-1.0.0-35 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\df2a927cad9ed88c652149627f1f4d9b\transformed\cardview-1.0.0\res
+com.example.ads.myapplication.app-play-services-measurement-api-21.6.2-36 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\e2f7e9855496996ff25ebd80996db1c6\transformed\play-services-measurement-api-21.6.2\res
+com.example.ads.myapplication.app-lifecycle-viewmodel-2.6.1-37 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\ee54fc1a7310b8b3c2e379e82af35fdc\transformed\lifecycle-viewmodel-2.6.1\res
+com.example.ads.myapplication.app-browser-1.4.0-38 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\efe30bee43aa01e5c7dd209a2cf3a7f4\transformed\browser-1.4.0\res
+com.example.ads.myapplication.app-drawerlayout-1.1.1-39 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\f521daace43b2584063a20fccd3811bf\transformed\drawerlayout-1.1.1\res
+com.example.ads.myapplication.app-core-ktx-1.12.0-40 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\f9ba800520f336ea2201e6ba110afb77\transformed\core-ktx-1.12.0\res
+com.example.ads.myapplication.app-core-1.12.0-41 C:\Users\DREAMWORLD\.gradle\caches\transforms-3\fd85aea3ea12766d3dc804a20c4622e8\transformed\core-1.12.0\res
+com.example.ads.myapplication.app-debug-42 D:\Remote Ads Sdk\RemoteAdsSdk\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.ads.myapplication.app-pngs-43 D:\Remote Ads Sdk\app\build\generated\res\pngs\debug
+com.example.ads.myapplication.app-res-44 D:\Remote Ads Sdk\app\build\generated\res\processDebugGoogleServices
+com.example.ads.myapplication.app-resValues-45 D:\Remote Ads Sdk\app\build\generated\res\resValues\debug
+com.example.ads.myapplication.app-packageDebugResources-46 D:\Remote Ads Sdk\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.ads.myapplication.app-packageDebugResources-47 D:\Remote Ads Sdk\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.ads.myapplication.app-debug-48 D:\Remote Ads Sdk\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.ads.myapplication.app-debug-49 D:\Remote Ads Sdk\app\src\debug\res
+com.example.ads.myapplication.app-main-50 D:\Remote Ads Sdk\app\src\main\res

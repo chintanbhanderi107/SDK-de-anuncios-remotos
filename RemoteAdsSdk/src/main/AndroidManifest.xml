@@ -30,7 +30,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".BaseAdsActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
 

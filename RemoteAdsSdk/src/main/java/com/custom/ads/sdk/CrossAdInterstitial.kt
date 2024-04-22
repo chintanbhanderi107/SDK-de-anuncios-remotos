@@ -44,7 +44,7 @@ class CrossAdInterstitial : DialogFragment() {
             crossInterstitialAdShowedListener?.onCompleted()
         }
 
-        Glide.with(requireActivity()).load(MainActivity.crossInterstitialAds?.adMedia)
+        Glide.with(requireActivity()).load(BaseAdsActivity.crossInterstitialAds?.adMedia)
             .into(binding.imgAdContent)
 
         binding.imgAdContent.startAnimation(
@@ -57,7 +57,7 @@ class CrossAdInterstitial : DialogFragment() {
             startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse(MainActivity.crossInterstitialAds?.adCallToActionUrl)
+                    Uri.parse(BaseAdsActivity.crossInterstitialAds?.adCallToActionUrl)
                 )
             )
         }
