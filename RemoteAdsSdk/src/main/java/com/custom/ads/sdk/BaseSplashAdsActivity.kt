@@ -26,19 +26,19 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
 
     abstract fun getLayoutResourceId(): Int
     abstract fun onCompleted()
-    abstract fun getAppOpenAdId(): String
-    abstract fun getBannerAdId(): String
-    abstract fun getNativeAdId(): String
-    abstract fun getInterstitialAdId(): String
+    abstract fun getDefaultAppOpenAdId(): String
+    abstract fun getDefaultBannerAdId(): String
+    abstract fun getDefaultNativeAdId(): String
+    abstract fun getDefaultInterstitialAdId(): String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutResourceId())
 
-        AdsApplication.appOpenAdId = getAppOpenAdId()
-        AdsApplication.bannerAdId = getBannerAdId()
-        AdsApplication.nativeAdId = getNativeAdId()
-        AdsApplication.interstitialAdId = getInterstitialAdId()
+        AdsApplication.defaultAppOpenAdId = getDefaultAppOpenAdId()
+        AdsApplication.defaultBannerAdId = getDefaultBannerAdId()
+        AdsApplication.defaultNativeAdId = getDefaultNativeAdId()
+        AdsApplication.defaultInterstitialAdId = getDefaultInterstitialAdId()
 
         initData(object : DataLoadCompleteListener {
             override fun onDataLoaded() {

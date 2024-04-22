@@ -9,19 +9,19 @@ class MainActivity : BaseSplashAdsActivity() {
         return R.layout.activity_main
     }
 
-    override fun getAppOpenAdId(): String {
+    override fun getDefaultAppOpenAdId(): String {
         return getString(R.string.app_open_ads)
     }
 
-    override fun getBannerAdId(): String {
+    override fun getDefaultBannerAdId(): String {
         return getString(R.string.banner_ads)
     }
 
-    override fun getNativeAdId(): String {
+    override fun getDefaultNativeAdId(): String {
         return getString(R.string.native_ads)
     }
 
-    override fun getInterstitialAdId(): String {
+    override fun getDefaultInterstitialAdId(): String {
         return getString(R.string.inter_ads)
     }
 

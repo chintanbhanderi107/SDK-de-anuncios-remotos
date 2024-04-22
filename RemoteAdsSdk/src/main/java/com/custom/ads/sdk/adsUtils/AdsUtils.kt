@@ -80,7 +80,7 @@ class AdsUtils {
                                     if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
                                         val adView = AdView(activity)
                                         adView.adUnitId =
-                                            if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds!! else AdsApplication.bannerAdId
+                                            if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds!! else AdsApplication.defaultBannerAdId
                                         adView.setAdSize(getAdSize(activity, frameLayout))
                                         adView.loadAd(AdRequest.Builder().build())
                                         frameLayout.removeAllViews()
@@ -235,7 +235,7 @@ class AdsUtils {
                                     if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
                                         val builder = AdLoader.Builder(
                                             activity,
-                                            if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds!! else AdsApplication.nativeAdId
+                                            if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds!! else AdsApplication.defaultNativeAdId
                                         )
                                         builder.forNativeAd {
                                             if (activity.isDestroyed) {
@@ -652,7 +652,7 @@ class AdsUtils {
 
         fun loadInterstitialAd(activity: Activity) {
             val adsId = AdsApplication.getInterstitialAdId()
-                .ifEmpty { AdsApplication.interstitialAdId }
+                .ifEmpty { AdsApplication.defaultInterstitialAdId }
             InterstitialAd.load(activity,
                 adsId,
                 AdRequest.Builder().build(),
@@ -908,7 +908,7 @@ class AdsUtils {
                                         }
                                     AppOpenAd.load(
                                         activity,
-                                        if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds!! else AdsApplication.nativeAdId,
+                                        if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds!! else AdsApplication.defaultNativeAdId,
                                         AdRequest.Builder().build(),
                                         loadCallback
                                     )

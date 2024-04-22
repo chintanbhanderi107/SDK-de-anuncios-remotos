@@ -108,7 +108,7 @@ class AppOpenManager(private val adsApplication: AdsApplication) : LifecycleObse
                         if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
                             if (BaseSplashAdsActivity.adsUnit[i].publishers == com.custom.ads.sdk.utils.Utils.AD_UNIT) {
                                 val adUnitId =
-                                    if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds else AdsApplication.appOpenAdId
+                                    if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds else AdsApplication.defaultAppOpenAdId
                                 if (!isShowingAd && isAdAvailable) {
                                     val fullScreenContentCallback: FullScreenContentCallback =
                                         object : FullScreenContentCallback() {
