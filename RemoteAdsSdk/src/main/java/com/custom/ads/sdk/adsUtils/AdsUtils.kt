@@ -32,7 +32,7 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.custom.ads.sdk.AdsApplication
 import com.custom.ads.sdk.CrossAdInterstitial
-import com.custom.ads.sdk.BaseAdsActivity
+import com.custom.ads.sdk.BaseSplashAdsActivity
 import com.custom.ads.sdk.R
 import com.custom.ads.sdk.interfaces.AppOpenAdShowedListener
 import com.custom.ads.sdk.interfaces.CrossInterstitialAdShowedListener
@@ -73,16 +73,14 @@ class AdsUtils {
                 if (AdsApplication.getShowAds()) {
                     shimmerLayout.visibility = View.VISIBLE
                     shimmerLayout.startShimmer()
-                    for (i in 0 until BaseAdsActivity.adsUnit.size) {
-                        if (BaseAdsActivity.adsUnit[i].adsName == screenName) {
-                            if (BaseAdsActivity.adsUnit[i].enableAds!!) {
-                                if (BaseAdsActivity.adsUnit[i].frequency!! > frequencyProvider.getFrequency()) {
-                                    if (BaseAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
+                    for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
+                        if (BaseSplashAdsActivity.adsUnit[i].adsName == screenName) {
+                            if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
+                                if (BaseSplashAdsActivity.adsUnit[i].frequency!! > frequencyProvider.getFrequency()) {
+                                    if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
                                         val adView = AdView(activity)
                                         adView.adUnitId =
-                                            if (BaseAdsActivity.adsUnit[i].idAds != null) BaseAdsActivity.adsUnit[i].idAds!! else activity.getString(
-                                                R.string.banner_ads
-                                            )
+                                            if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds!! else AdsApplication.bannerAdId
                                         adView.setAdSize(getAdSize(activity, frameLayout))
                                         adView.loadAd(AdRequest.Builder().build())
                                         frameLayout.removeAllViews()
@@ -105,7 +103,7 @@ class AdsUtils {
                                                     "TAG",
                                                     "onBannerAdFailedToLoad: ${p0.message}"
                                                 )
-                                                if (BaseAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
+                                                if (BaseSplashAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
                                                     loadAndShowCrossPromotionBanner(
                                                         activity,
                                                         frameLayout,
@@ -121,7 +119,7 @@ class AdsUtils {
                                                 }
                                             }
                                         }
-                                    } else if (BaseAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
+                                    } else if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
                                         loadAndShowCrossPromotionBanner(
                                             activity,
                                             frameLayout,
@@ -167,7 +165,7 @@ class AdsUtils {
         ) {
             Handler(Looper.getMainLooper()).postDelayed({
                 crossBannerLayout.visibility = View.VISIBLE
-                Glide.with(activity).load(BaseAdsActivity.crossBannerAds?.adMedia)
+                Glide.with(activity).load(BaseSplashAdsActivity.crossBannerAds?.adMedia)
                     .listener(object : RequestListener<Drawable> {
                         override fun onLoadFailed(
                             e: GlideException?,
@@ -230,16 +228,14 @@ class AdsUtils {
 
                     shimmerLayout.visibility = View.VISIBLE
                     shimmerLayout.startShimmer()
-                    for (i in 0 until BaseAdsActivity.adsUnit.size) {
-                        if (BaseAdsActivity.adsUnit[i].adsName == screenName) {
-                            if (BaseAdsActivity.adsUnit[i].enableAds!!) {
-                                if (BaseAdsActivity.adsUnit[i].frequency!! > frequencyProvider.getFrequency()) {
-                                    if (BaseAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
+                    for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
+                        if (BaseSplashAdsActivity.adsUnit[i].adsName == screenName) {
+                            if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
+                                if (BaseSplashAdsActivity.adsUnit[i].frequency!! > frequencyProvider.getFrequency()) {
+                                    if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
                                         val builder = AdLoader.Builder(
                                             activity,
-                                            if (BaseAdsActivity.adsUnit[i].idAds != null) BaseAdsActivity.adsUnit[i].idAds!! else activity.getString(
-                                                R.string.native_ads
-                                            )
+                                            if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds!! else AdsApplication.nativeAdId
                                         )
                                         builder.forNativeAd {
                                             if (activity.isDestroyed) {
@@ -248,7 +244,7 @@ class AdsUtils {
                                             this@Companion.nativeAd = it
 
                                             if (displaySize.first >= 720 && displaySize.second >= 1344) {
-                                                when (BaseAdsActivity.adsUnit[i].adsLayout) {
+                                                when (BaseSplashAdsActivity.adsUnit[i].adsLayout) {
                                                     "four" -> {
                                                         val adView =
                                                             activity.layoutInflater.inflate(
@@ -330,14 +326,14 @@ class AdsUtils {
                                                         "TAG",
                                                         "onNativeAdFailedToLoad: ${loadAdError.message}"
                                                     )
-                                                    if (BaseAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
+                                                    if (BaseSplashAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
                                                         loadAndShowCrossPromotionNative(
                                                             activity,
                                                             displaySize.first,
                                                             displaySize.second,
                                                             shimmerLayout,
                                                             frameLayout,
-                                                            BaseAdsActivity.adsUnit[i].adsLayout!!,
+                                                            BaseSplashAdsActivity.adsUnit[i].adsLayout!!,
                                                             frequencyProvider
                                                         )
                                                     } else {
@@ -357,14 +353,14 @@ class AdsUtils {
                                                 }
                                             }).build()
                                         adLoader.loadAd(AdRequest.Builder().build())
-                                    } else if (BaseAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
+                                    } else if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
                                         loadAndShowCrossPromotionNative(
                                             activity,
                                             displaySize.first,
                                             displaySize.second,
                                             shimmerLayout,
                                             frameLayout,
-                                            BaseAdsActivity.adsUnit[i].adsLayout!!,
+                                            BaseSplashAdsActivity.adsUnit[i].adsLayout!!,
                                             frequencyProvider
                                         )
                                     }
@@ -414,26 +410,26 @@ class AdsUtils {
                             )
                             adView.setBackgroundColor(activity.resources.getColor(R.color.white))
                             adView.findViewById<View>(R.id.adChoice).visibility = View.VISIBLE
-                            Glide.with(activity).load(BaseAdsActivity.crossNativeAds?.adAppIcon)
+                            Glide.with(activity).load(BaseSplashAdsActivity.crossNativeAds?.adAppIcon)
                                 .into(adView.findViewById<View>(R.id.adAppIcon) as AppCompatImageView)
                             (adView.findViewById<View>(R.id.adHeadline) as AppCompatTextView).text =
-                                BaseAdsActivity.crossNativeAds?.adHeadline
+                                BaseSplashAdsActivity.crossNativeAds?.adHeadline
                             (adView.findViewById<View>(R.id.adBody) as AppCompatTextView).text =
-                                BaseAdsActivity.crossNativeAds?.adBody
+                                BaseSplashAdsActivity.crossNativeAds?.adBody
                             (adView.findViewById<View>(R.id.adCallToAction) as AppCompatButton).text =
-                                BaseAdsActivity.crossNativeAds?.adCallToActionText
+                                BaseSplashAdsActivity.crossNativeAds?.adCallToActionText
                             adView.findViewById<View>(R.id.adCallToAction)
                                 .setOnClickListener { v: View? ->
                                     val intent = Intent(Intent.ACTION_VIEW)
                                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                                    intent.setData(Uri.parse(BaseAdsActivity.crossNativeAds?.adCallToActionUrl))
+                                    intent.setData(Uri.parse(BaseSplashAdsActivity.crossNativeAds?.adCallToActionUrl))
                                     activity.startActivity(intent)
                                 }
                             adView.findViewById<View>(R.id.adChoice)
                                 .setOnClickListener { v: View? ->
                                     val intent = Intent(Intent.ACTION_VIEW)
                                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                                    intent.setData(Uri.parse(BaseAdsActivity.crossNativeAds?.infoUrl))
+                                    intent.setData(Uri.parse(BaseSplashAdsActivity.crossNativeAds?.infoUrl))
                                     activity.startActivity(intent)
                                 }
                             frequencyProvider.incrementFrequency()
@@ -447,26 +443,26 @@ class AdsUtils {
                                     R.layout.small_native_ad_bottom_button_3, null
                                 )
                             adView2.findViewById<View>(R.id.adChoice).visibility = View.VISIBLE
-                            Glide.with(activity).load(BaseAdsActivity.crossNativeAds?.adAppIcon)
+                            Glide.with(activity).load(BaseSplashAdsActivity.crossNativeAds?.adAppIcon)
                                 .into(adView2.findViewById<View>(R.id.adAppIcon) as AppCompatImageView)
                             (adView2.findViewById<View>(R.id.adHeadline) as AppCompatTextView).text =
-                                BaseAdsActivity.crossNativeAds?.adHeadline
+                                BaseSplashAdsActivity.crossNativeAds?.adHeadline
                             (adView2.findViewById<View>(R.id.adBody) as AppCompatTextView).text =
-                                BaseAdsActivity.crossNativeAds?.adBody
+                                BaseSplashAdsActivity.crossNativeAds?.adBody
                             (adView2.findViewById<View>(R.id.adCallToAction) as AppCompatButton).text =
-                                BaseAdsActivity.crossNativeAds?.adCallToActionText
+                                BaseSplashAdsActivity.crossNativeAds?.adCallToActionText
                             adView2.findViewById<View>(R.id.adCallToAction)
                                 .setOnClickListener { v: View? ->
                                     val intent = Intent(Intent.ACTION_VIEW)
                                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                                    intent.setData(Uri.parse(BaseAdsActivity.crossNativeAds?.adCallToActionUrl))
+                                    intent.setData(Uri.parse(BaseSplashAdsActivity.crossNativeAds?.adCallToActionUrl))
                                     activity.startActivity(intent)
                                 }
                             adView2.findViewById<View>(R.id.adChoice)
                                 .setOnClickListener { v: View? ->
                                     val intent = Intent(Intent.ACTION_VIEW)
                                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                                    intent.setData(Uri.parse(BaseAdsActivity.crossNativeAds?.infoUrl))
+                                    intent.setData(Uri.parse(BaseSplashAdsActivity.crossNativeAds?.infoUrl))
                                     activity.startActivity(intent)
                                 }
                             frequencyProvider.incrementFrequency()
@@ -483,35 +479,35 @@ class AdsUtils {
                                 View.VISIBLE
                             adView3.findViewById<View>(R.id.ad_media).visibility = View.GONE
                             adView3.findViewById<View>(R.id.adChoice).visibility = View.VISIBLE
-                            Glide.with(activity).load(BaseAdsActivity.crossNativeAds?.adMedia)
+                            Glide.with(activity).load(BaseSplashAdsActivity.crossNativeAds?.adMedia)
                                 .into(adView3.findViewById<View>(R.id.ad_media_cross) as AppCompatImageView)
-                            Glide.with(activity).load(BaseAdsActivity.crossNativeAds?.adAppIcon)
+                            Glide.with(activity).load(BaseSplashAdsActivity.crossNativeAds?.adAppIcon)
                                 .into(adView3.findViewById<View>(R.id.ad_app_icon) as AppCompatImageView)
                             (adView3.findViewById<View>(R.id.ad_headline) as AppCompatTextView).text =
-                                BaseAdsActivity.crossNativeAds?.adHeadline
+                                BaseSplashAdsActivity.crossNativeAds?.adHeadline
                             (adView3.findViewById<View>(R.id.ad_body) as AppCompatTextView).text =
-                                BaseAdsActivity.crossNativeAds?.adBody
+                                BaseSplashAdsActivity.crossNativeAds?.adBody
                             (adView3.findViewById<View>(R.id.ad_call_to_action) as AppCompatTextView).text =
-                                BaseAdsActivity.crossNativeAds?.adCallToActionText
+                                BaseSplashAdsActivity.crossNativeAds?.adCallToActionText
                             adView3.findViewById<View>(R.id.ad_call_to_action)
                                 .setOnClickListener { v: View? ->
                                     val intent = Intent(Intent.ACTION_VIEW)
                                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                                    intent.setData(Uri.parse(BaseAdsActivity.crossNativeAds?.adCallToActionUrl))
+                                    intent.setData(Uri.parse(BaseSplashAdsActivity.crossNativeAds?.adCallToActionUrl))
                                     activity.startActivity(intent)
                                 }
                             adView3.findViewById<View>(R.id.ad_media_cross)
                                 .setOnClickListener { v: View? ->
                                     val intent = Intent(Intent.ACTION_VIEW)
                                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                                    intent.setData(Uri.parse(BaseAdsActivity.crossNativeAds?.adCallToActionUrl))
+                                    intent.setData(Uri.parse(BaseSplashAdsActivity.crossNativeAds?.adCallToActionUrl))
                                     activity.startActivity(intent)
                                 }
                             adView3.findViewById<View>(R.id.adChoice)
                                 .setOnClickListener { v: View? ->
                                     val intent = Intent(Intent.ACTION_VIEW)
                                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                                    intent.setData(Uri.parse(BaseAdsActivity.crossNativeAds?.infoUrl))
+                                    intent.setData(Uri.parse(BaseSplashAdsActivity.crossNativeAds?.infoUrl))
                                     activity.startActivity(intent)
                                 }
                             frequencyProvider.incrementFrequency()
@@ -526,35 +522,35 @@ class AdsUtils {
                                 View.VISIBLE
                             adView4.findViewById<View>(R.id.ad_media).visibility = View.GONE
                             adView4.findViewById<View>(R.id.adChoice).visibility = View.VISIBLE
-                            Glide.with(activity).load(BaseAdsActivity.crossNativeAds?.adMedia)
+                            Glide.with(activity).load(BaseSplashAdsActivity.crossNativeAds?.adMedia)
                                 .into(adView4.findViewById<View>(R.id.ad_media_cross) as AppCompatImageView)
-                            Glide.with(activity).load(BaseAdsActivity.crossNativeAds?.adAppIcon)
+                            Glide.with(activity).load(BaseSplashAdsActivity.crossNativeAds?.adAppIcon)
                                 .into(adView4.findViewById<View>(R.id.ad_app_icon) as AppCompatImageView)
                             (adView4.findViewById<View>(R.id.ad_headline) as AppCompatTextView).text =
-                                BaseAdsActivity.crossNativeAds?.adHeadline
+                                BaseSplashAdsActivity.crossNativeAds?.adHeadline
                             (adView4.findViewById<View>(R.id.ad_body) as AppCompatTextView).text =
-                                BaseAdsActivity.crossNativeAds?.adBody
+                                BaseSplashAdsActivity.crossNativeAds?.adBody
                             (adView4.findViewById<View>(R.id.ad_call_to_action) as AppCompatTextView).text =
-                                BaseAdsActivity.crossNativeAds?.adCallToActionText
+                                BaseSplashAdsActivity.crossNativeAds?.adCallToActionText
                             adView4.findViewById<View>(R.id.ad_call_to_action)
                                 .setOnClickListener { v: View? ->
                                     val intent = Intent(Intent.ACTION_VIEW)
                                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                                    intent.setData(Uri.parse(BaseAdsActivity.crossNativeAds?.adCallToActionUrl))
+                                    intent.setData(Uri.parse(BaseSplashAdsActivity.crossNativeAds?.adCallToActionUrl))
                                     activity.startActivity(intent)
                                 }
                             adView4.findViewById<View>(R.id.ad_media_cross)
                                 .setOnClickListener { v: View? ->
                                     val intent = Intent(Intent.ACTION_VIEW)
                                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                                    intent.setData(Uri.parse(BaseAdsActivity.crossNativeAds?.adCallToActionUrl))
+                                    intent.setData(Uri.parse(BaseSplashAdsActivity.crossNativeAds?.adCallToActionUrl))
                                     activity.startActivity(intent)
                                 }
                             adView4.findViewById<View>(R.id.adChoice)
                                 .setOnClickListener { v: View? ->
                                     val intent = Intent(Intent.ACTION_VIEW)
                                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                                    intent.setData(Uri.parse(BaseAdsActivity.crossNativeAds?.infoUrl))
+                                    intent.setData(Uri.parse(BaseSplashAdsActivity.crossNativeAds?.infoUrl))
                                     activity.startActivity(intent)
                                 }
                             frequencyProvider.incrementFrequency()
@@ -567,24 +563,24 @@ class AdsUtils {
                         R.layout.small_native_ad_button_right_4, null
                     )
                     adView.findViewById<View>(R.id.adChoice).visibility = View.VISIBLE
-                    Glide.with(activity).load(BaseAdsActivity.crossNativeAds?.adAppIcon)
+                    Glide.with(activity).load(BaseSplashAdsActivity.crossNativeAds?.adAppIcon)
                         .into(adView.findViewById<View>(R.id.adAppIcon) as AppCompatImageView)
                     (adView.findViewById<View>(R.id.adHeadline) as AppCompatTextView).text =
-                        BaseAdsActivity.crossNativeAds?.adHeadline
+                        BaseSplashAdsActivity.crossNativeAds?.adHeadline
                     (adView.findViewById<View>(R.id.adBody) as AppCompatTextView).text =
-                        BaseAdsActivity.crossNativeAds?.adBody
+                        BaseSplashAdsActivity.crossNativeAds?.adBody
                     (adView.findViewById<View>(R.id.adCallToAction) as AppCompatButton).text =
-                        BaseAdsActivity.crossNativeAds?.adCallToActionText
+                        BaseSplashAdsActivity.crossNativeAds?.adCallToActionText
                     adView.findViewById<View>(R.id.adCallToAction).setOnClickListener { v: View? ->
                         val intent = Intent(Intent.ACTION_VIEW)
                         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                        intent.setData(Uri.parse(BaseAdsActivity.crossNativeAds?.adCallToActionUrl))
+                        intent.setData(Uri.parse(BaseSplashAdsActivity.crossNativeAds?.adCallToActionUrl))
                         activity.startActivity(intent)
                     }
                     adView.findViewById<View>(R.id.adChoice).setOnClickListener { v: View? ->
                         val intent = Intent(Intent.ACTION_VIEW)
                         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                        intent.setData(Uri.parse(BaseAdsActivity.crossNativeAds?.infoUrl))
+                        intent.setData(Uri.parse(BaseSplashAdsActivity.crossNativeAds?.infoUrl))
                         activity.startActivity(intent)
                     }
                     frequencyProvider.incrementFrequency()
@@ -656,7 +652,7 @@ class AdsUtils {
 
         fun loadInterstitialAd(activity: Activity) {
             val adsId = AdsApplication.getInterstitialAdId()
-                .ifEmpty { activity.getString(R.string.inter_ads) }
+                .ifEmpty { AdsApplication.interstitialAdId }
             InterstitialAd.load(activity,
                 adsId,
                 AdRequest.Builder().build(),
@@ -683,10 +679,10 @@ class AdsUtils {
             if (!AdsApplication.isPremium()) {
                 if (AdsApplication.getShowAds()) {
                     if (AdsApplication.getHomeScreenAds()) {
-                        for (i in 0 until BaseAdsActivity.adsUnit.size) {
-                            if (BaseAdsActivity.adsUnit[i].adsName == screenName) {
-                                if (BaseAdsActivity.adsUnit[i].enableAds!!) {
-                                    if (BaseAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
+                        for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
+                            if (BaseSplashAdsActivity.adsUnit[i].adsName == screenName) {
+                                if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
+                                    if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
                                         if (interstitialAd != null) {
                                             interstitialAd?.show(activity)
                                             AdsApplication.appOpenManager?.isAdShow = true
@@ -718,7 +714,7 @@ class AdsUtils {
                                                     }
                                                 }
                                         } else {
-                                            if (BaseAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
+                                            if (BaseSplashAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
                                                 val appCompatActivity =
                                                     activity as? AppCompatActivity
                                                 appCompatActivity?.supportFragmentManager?.let {
@@ -742,7 +738,7 @@ class AdsUtils {
                                                 interstitialAdShowedListener.onCompleted()
                                             }
                                         }
-                                    } else if (BaseAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
+                                    } else if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
                                         val appCompatActivity = activity as? AppCompatActivity
                                         appCompatActivity?.supportFragmentManager?.let {
                                             val crossAdInterstitial = CrossAdInterstitial()
@@ -766,10 +762,10 @@ class AdsUtils {
                         }
                     } else {
                         if (AdsApplication.adsClickCounter >= AdsApplication.getUserClickCounter()) {
-                            for (i in 0 until BaseAdsActivity.adsUnit.size) {
-                                if (BaseAdsActivity.adsUnit[i].adsName == screenName) {
-                                    if (BaseAdsActivity.adsUnit[i].enableAds!!) {
-                                        if (BaseAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
+                            for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
+                                if (BaseSplashAdsActivity.adsUnit[i].adsName == screenName) {
+                                    if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
+                                        if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
                                             if (interstitialAd != null) {
                                                 interstitialAd?.show(activity)
                                                 interstitialAd?.fullScreenContentCallback =
@@ -798,7 +794,7 @@ class AdsUtils {
                                                         }
                                                     }
                                             } else {
-                                                if (BaseAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
+                                                if (BaseSplashAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
                                                     val appCompatActivity =
                                                         activity as? AppCompatActivity
                                                     appCompatActivity?.supportFragmentManager?.let {
@@ -819,7 +815,7 @@ class AdsUtils {
                                                     interstitialAdShowedListener.onCompleted()
                                                 }
                                             }
-                                        } else if (BaseAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
+                                        } else if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
                                             val appCompatActivity = activity as? AppCompatActivity
                                             appCompatActivity?.supportFragmentManager?.let {
                                                 val crossAdInterstitial = CrossAdInterstitial()
@@ -859,10 +855,10 @@ class AdsUtils {
         ) {
             if (!AdsApplication.isPremium()) {
                 if (AdsApplication.getShowAds()) {
-                    for (i in 0 until BaseAdsActivity.adsUnit.size) {
-                        if (BaseAdsActivity.adsUnit[i].adsName == screenName) {
-                            if (BaseAdsActivity.adsUnit[i].enableAds!!) {
-                                if (BaseAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
+                    for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
+                        if (BaseSplashAdsActivity.adsUnit[i].adsName == screenName) {
+                            if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
+                                if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
                                     val loadCallback: AppOpenAd.AppOpenAdLoadCallback =
                                         object : AppOpenAd.AppOpenAdLoadCallback() {
                                             override fun onAdLoaded(ad: AppOpenAd) {
@@ -898,7 +894,7 @@ class AdsUtils {
                                                     "TAG",
                                                     "onAppOpenAdFailedToLoad: ${loadAdError.message}"
                                                 )
-                                                if (BaseAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
+                                                if (BaseSplashAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
                                                     showCrossAppOpenAds(
                                                         activity,
                                                         appOpenAdShowedListener
@@ -912,13 +908,11 @@ class AdsUtils {
                                         }
                                     AppOpenAd.load(
                                         activity,
-                                        if (BaseAdsActivity.adsUnit[i].idAds != null) BaseAdsActivity.adsUnit[i].idAds!! else activity.getString(
-                                            R.string.native_ads
-                                        ),
+                                        if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds!! else AdsApplication.nativeAdId,
                                         AdRequest.Builder().build(),
                                         loadCallback
                                     )
-                                } else if (BaseAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
+                                } else if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
                                     showCrossAppOpenAds(
                                         activity,
                                         appOpenAdShowedListener
@@ -952,11 +946,11 @@ class AdsUtils {
             val adTopLayout = fullScreenDialog.findViewById<RelativeLayout>(R.id.adTopLayout)
             val adBottomLayout = fullScreenDialog.findViewById<RelativeLayout>(R.id.adBottomLayout)
             val imgAdMedia = fullScreenDialog.findViewById<ImageView>(R.id.imgAdMedia)
-            Glide.with(activity).load(BaseAdsActivity.crossOpenAppAds?.adAppIcon)
+            Glide.with(activity).load(BaseSplashAdsActivity.crossOpenAppAds?.adAppIcon)
                 .into(imgAdIcon)
-            Glide.with(activity).load(BaseAdsActivity.crossOpenAppAds?.adMedia)
+            Glide.with(activity).load(BaseSplashAdsActivity.crossOpenAppAds?.adMedia)
                 .into(imgAdMedia)
-            textAdName.text = BaseAdsActivity.crossOpenAppAds?.adHeadline
+            textAdName.text = BaseSplashAdsActivity.crossOpenAppAds?.adHeadline
             textContinueToApp.setOnClickListener {
                 fullScreenDialog.dismiss()
                 AdsApplication.appOpenManager?.isAdShow = false
@@ -974,7 +968,7 @@ class AdsUtils {
                 activity.startActivity(
                     Intent(
                         Intent.ACTION_VIEW, Uri.parse(
-                            BaseAdsActivity.crossOpenAppAds?.adCallToActionUrl
+                            BaseSplashAdsActivity.crossOpenAppAds?.adCallToActionUrl
                         )
                     )
                 )

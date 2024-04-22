@@ -2,9 +2,4 @@
     <string name="app_name">Ads Sdk</string>
     <string name="title">Title</string>
     <string name="google_play_tez">Google play(Tez)</string>
-
-    <string name="banner_ads">/6499/example/banner</string>
-    <string name="native_ads">/6499/example/native</string>
-    <string name="inter_ads">/6499/example/interstitial</string>
-    <string name="app_open_ads">ca-app-pub-3940256099942544/9257395921</string>
 </resources>

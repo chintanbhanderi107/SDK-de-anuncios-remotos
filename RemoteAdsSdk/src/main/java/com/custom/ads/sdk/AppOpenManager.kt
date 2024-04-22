@@ -36,7 +36,7 @@ class AppOpenManager(private val adsApplication: AdsApplication) : LifecycleObse
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onStart() {
-        if (currentActivity !is BaseAdsActivity) {
+        if (currentActivity !is BaseSplashAdsActivity) {
             if (!isAdShow && !AdsApplication.isPremium()) {
                 showAdIfAvailable()
             }
@@ -103,14 +103,12 @@ class AppOpenManager(private val adsApplication: AdsApplication) : LifecycleObse
     private fun showAdIfAvailable() {
         if (!AdsApplication.isPremium()) {
             if (AdsApplication.getShowAds()) {
-                for (i in 0 until BaseAdsActivity.adsUnit.size) {
-                    if (BaseAdsActivity.adsUnit[i].adsName == "on_resume_open_app") {
-                        if (BaseAdsActivity.adsUnit[i].enableAds!!) {
-                            if (BaseAdsActivity.adsUnit[i].publishers == com.custom.ads.sdk.utils.Utils.AD_UNIT) {
+                for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
+                    if (BaseSplashAdsActivity.adsUnit[i].adsName == "on_resume_open_app") {
+                        if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
+                            if (BaseSplashAdsActivity.adsUnit[i].publishers == com.custom.ads.sdk.utils.Utils.AD_UNIT) {
                                 val adUnitId =
-                                    if (BaseAdsActivity.adsUnit[i].idAds != null) BaseAdsActivity.adsUnit[i].idAds else currentActivity?.getString(
-                                        R.string.app_open_ads
-                                    )
+                                    if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds else AdsApplication.appOpenAdId
                                 if (!isShowingAd && isAdAvailable) {
                                     val fullScreenContentCallback: FullScreenContentCallback =
                                         object : FullScreenContentCallback() {
@@ -120,7 +118,7 @@ class AppOpenManager(private val adsApplication: AdsApplication) : LifecycleObse
                                                     isShowingAd = false
                                                     fetchAd(
                                                         adUnitId!!,
-                                                        BaseAdsActivity.adsUnit[i].adFailed!!
+                                                        BaseSplashAdsActivity.adsUnit[i].adFailed!!
                                                     )
                                                 } catch (exception: Exception) {
                                                     exception.printStackTrace()
@@ -139,9 +137,9 @@ class AppOpenManager(private val adsApplication: AdsApplication) : LifecycleObse
                                     appOpenAd?.fullScreenContentCallback = fullScreenContentCallback
                                     appOpenAd?.show(currentActivity!!)
                                 } else {
-                                    fetchAd(adUnitId!!, BaseAdsActivity.adsUnit[i].adFailed!!)
+                                    fetchAd(adUnitId!!, BaseSplashAdsActivity.adsUnit[i].adFailed!!)
                                 }
-                            } else if (BaseAdsActivity.adsUnit[i].publishers == com.custom.ads.sdk.utils.Utils.CROSS_PROMOTION) {
+                            } else if (BaseSplashAdsActivity.adsUnit[i].publishers == com.custom.ads.sdk.utils.Utils.CROSS_PROMOTION) {
                                 showCrossAppOpenAds()
                             }
                         }
@@ -164,9 +162,9 @@ class AppOpenManager(private val adsApplication: AdsApplication) : LifecycleObse
         val adTopLayout: RelativeLayout = fullScreenDialog.findViewById(R.id.adTopLayout)
         val adBottomLayout: RelativeLayout = fullScreenDialog.findViewById(R.id.adBottomLayout)
         val imgAdMedia = fullScreenDialog.findViewById<ImageView>(R.id.imgAdMedia)
-        Glide.with(currentActivity!!).load(BaseAdsActivity.crossOpenAppAds?.adAppIcon).into(imgAdIcon)
-        Glide.with(currentActivity!!).load(BaseAdsActivity.crossOpenAppAds?.adMedia).into(imgAdMedia)
-        textAdName.text = BaseAdsActivity.crossOpenAppAds?.adHeadline
+        Glide.with(currentActivity!!).load(BaseSplashAdsActivity.crossOpenAppAds?.adAppIcon).into(imgAdIcon)
+        Glide.with(currentActivity!!).load(BaseSplashAdsActivity.crossOpenAppAds?.adMedia).into(imgAdMedia)
+        textAdName.text = BaseSplashAdsActivity.crossOpenAppAds?.adHeadline
         textContinueToApp.setOnClickListener {
             fullScreenDialog.dismiss()
             AdsApplication.appOpenManager?.isAdShow = false
@@ -182,7 +180,7 @@ class AppOpenManager(private val adsApplication: AdsApplication) : LifecycleObse
         adBottomLayout.setOnClickListener {
             currentActivity!!.startActivity(
                 Intent(
-                    Intent.ACTION_VIEW, Uri.parse(BaseAdsActivity.crossOpenAppAds?.adCallToActionUrl)
+                    Intent.ACTION_VIEW, Uri.parse(BaseSplashAdsActivity.crossOpenAppAds?.adCallToActionUrl)
                 )
             )
         }

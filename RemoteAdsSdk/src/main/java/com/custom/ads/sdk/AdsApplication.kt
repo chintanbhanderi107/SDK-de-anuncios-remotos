@@ -15,6 +15,10 @@ class AdsApplication : Application() {
     }
 
     companion object {
+        var appOpenAdId: String = ""
+        var bannerAdId: String = ""
+        var nativeAdId: String = ""
+        var interstitialAdId: String = ""
         var adsClickCounter: Int = 0
         var adsSharedPreferences: SharedPreferences? = null
         var adsEditor: SharedPreferences.Editor? = null

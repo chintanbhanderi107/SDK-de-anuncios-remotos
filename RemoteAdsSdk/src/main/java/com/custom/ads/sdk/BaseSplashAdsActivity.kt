@@ -18,7 +18,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import org.json.JSONObject
 
-abstract class BaseAdsActivity : AppCompatActivity() {
+abstract class BaseSplashAdsActivity : AppCompatActivity() {
     private val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
     private val configSettings = remoteConfigSettings {
         minimumFetchIntervalInSeconds = 0
@@ -26,10 +26,19 @@ abstract class BaseAdsActivity : AppCompatActivity() {
 
     abstract fun getLayoutResourceId(): Int
     abstract fun onCompleted()
+    abstract fun getAppOpenAdId(): String
+    abstract fun getBannerAdId(): String
+    abstract fun getNativeAdId(): String
+    abstract fun getInterstitialAdId(): String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutResourceId())
+
+        AdsApplication.appOpenAdId = getAppOpenAdId()
+        AdsApplication.bannerAdId = getBannerAdId()
+        AdsApplication.nativeAdId = getNativeAdId()
+        AdsApplication.interstitialAdId = getInterstitialAdId()
 
         initData(object : DataLoadCompleteListener {
             override fun onDataLoaded() {
@@ -45,14 +54,13 @@ abstract class BaseAdsActivity : AppCompatActivity() {
                     AdsApplication.getCrossBannerAds(), RemoteAds.Banner::class.java
                 )
                 crossInterstitialAds = Gson().fromJson(
-                    AdsApplication.getCrossInterstitialAds(),
-                    RemoteAds.Interstitial::class.java
+                    AdsApplication.getCrossInterstitialAds(), RemoteAds.Interstitial::class.java
                 )
                 crossOpenAppAds = Gson().fromJson(
                     AdsApplication.getCrossOpenAppAds(), RemoteAds.Openapp::class.java
                 )
 
-                AdsUtils.loadInterstitialAd(this@BaseAdsActivity)
+                AdsUtils.loadInterstitialAd(this@BaseSplashAdsActivity)
 
                 onCompleted()
             }
