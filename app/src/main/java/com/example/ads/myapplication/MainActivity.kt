@@ -1,12 +1,22 @@
 package com.example.ads.myapplication
 
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
+import android.widget.RelativeLayout
 import com.custom.ads.sdk.AdsApplication
 import com.custom.ads.sdk.BaseSplashAdsActivity
 
 class MainActivity : BaseSplashAdsActivity() {
-    override fun getLayoutResourceId(): Int {
-        return R.layout.activity_main
+    override fun getLayoutView(): View {
+        val relativeLayout = RelativeLayout(this)
+        val progressBar = ProgressBar(this)
+        val layoutParams = RelativeLayout.LayoutParams(100, 100)
+        layoutParams.addRule(14)
+        layoutParams.addRule(12)
+        layoutParams.setMargins(0, 0, 0, 50)
+        relativeLayout.addView(progressBar, layoutParams)
+        return relativeLayout
     }
 
     override fun getDefaultAppOpenAdId(): String {

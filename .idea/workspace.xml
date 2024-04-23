@@ -10,6 +10,11 @@
           <theme>@style/Theme.MyApplication</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main2.xml">
+        <config>
+          <theme>@style/Theme.MyApplication</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AutoImportSettings">
@@ -74,6 +79,9 @@
       <recent name="D:\Remote Ads Sdk\app" />
       <recent name="D:\Remote Ads Sdk\RemoteAdsSdk" />
       <recent name="D:\Remote Ads Sdk" />
+    </key>
+    <key name="android.template.406313043">
+      <recent name="com.example.ads.myapplication" />
     </key>
   </component>
   <component name="RunManager">
@@ -391,7 +399,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713778858213</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="init Code">
+      <option name="closed" value="true" />
+      <created>1713786076895</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1713786076895</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

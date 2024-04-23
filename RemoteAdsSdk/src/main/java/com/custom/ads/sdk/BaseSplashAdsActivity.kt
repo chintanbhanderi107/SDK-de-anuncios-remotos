@@ -2,6 +2,7 @@ package com.custom.ads.sdk
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.custom.ads.sdk.adsUtils.AdsUtils
 import com.custom.ads.sdk.interfaces.DataLoadCompleteListener
@@ -24,7 +25,7 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
         minimumFetchIntervalInSeconds = 0
     }
 
-    abstract fun getLayoutResourceId(): Int
+    abstract fun getLayoutView(): View
     abstract fun onCompleted()
     abstract fun getDefaultAppOpenAdId(): String
     abstract fun getDefaultBannerAdId(): String
@@ -33,7 +34,7 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutResourceId())
+        setContentView(getLayoutView())
 
         AdsApplication.defaultAppOpenAdId = getDefaultAppOpenAdId()
         AdsApplication.defaultBannerAdId = getDefaultBannerAdId()
