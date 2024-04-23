@@ -3,6 +3,8 @@ package com.custom.ads.sdk
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import android.net.ConnectivityManager
+
 
 open class AdsApplication : Application() {
     private val adsPreferencesKey: String = "Ads_Preference"
@@ -167,6 +169,15 @@ open class AdsApplication : Application() {
 
         fun isPremium(): Boolean {
             return adsSharedPreferences?.getBoolean("is_premium", false) ?: false
+        }
+
+        fun isNetworkAvailable(context: Context): Boolean {
+            val connectivityManager =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val activeNetworkInfo = connectivityManager.activeNetworkInfo
+            return activeNetworkInfo != null && activeNetworkInfo.isConnected &&
+                    (activeNetworkInfo.type == ConnectivityManager.TYPE_MOBILE ||
+                            activeNetworkInfo.type == ConnectivityManager.TYPE_WIFI)
         }
     }
 }

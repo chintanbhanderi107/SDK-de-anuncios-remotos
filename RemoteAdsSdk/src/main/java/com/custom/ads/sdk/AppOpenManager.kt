@@ -101,46 +101,48 @@ class AppOpenManager(private val adsApplication: AdsApplication) : LifecycleObse
     }
 
     private fun showAdIfAvailable() {
-        if (!AdsApplication.isPremium()) {
-            if (AdsApplication.getShowAds()) {
-                for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
-                    if (BaseSplashAdsActivity.adsUnit[i].adsName == "on_resume_open_app") {
-                        if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
-                            if (BaseSplashAdsActivity.adsUnit[i].publishers == com.custom.ads.sdk.utils.Utils.AD_UNIT) {
-                                val adUnitId =
-                                    if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds else AdsApplication.defaultAppOpenAdId
-                                if (!isShowingAd && isAdAvailable) {
-                                    val fullScreenContentCallback: FullScreenContentCallback =
-                                        object : FullScreenContentCallback() {
-                                            override fun onAdDismissedFullScreenContent() {
-                                                try {
+        if (AdsApplication.isNetworkAvailable(currentActivity!!)) {
+            if (!AdsApplication.isPremium()) {
+                if (AdsApplication.getShowAds()) {
+                    for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
+                        if (BaseSplashAdsActivity.adsUnit[i].adsName == "on_resume_open_app") {
+                            if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
+                                if (BaseSplashAdsActivity.adsUnit[i].publishers == com.custom.ads.sdk.utils.Utils.AD_UNIT) {
+                                    val adUnitId =
+                                        if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds else AdsApplication.defaultAppOpenAdId
+                                    if (!isShowingAd && isAdAvailable) {
+                                        val fullScreenContentCallback: FullScreenContentCallback =
+                                            object : FullScreenContentCallback() {
+                                                override fun onAdDismissedFullScreenContent() {
+                                                    try {
+                                                        appOpenAd = null
+                                                        isShowingAd = false
+                                                        fetchAd(
+                                                            adUnitId!!,
+                                                            BaseSplashAdsActivity.adsUnit[i].adFailed!!
+                                                        )
+                                                    } catch (exception: Exception) {
+                                                        exception.printStackTrace()
+                                                    }
+                                                }
+
+                                                override fun onAdFailedToShowFullScreenContent(adError: AdError) {
                                                     appOpenAd = null
                                                     isShowingAd = false
-                                                    fetchAd(
-                                                        adUnitId!!,
-                                                        BaseSplashAdsActivity.adsUnit[i].adFailed!!
-                                                    )
-                                                } catch (exception: Exception) {
-                                                    exception.printStackTrace()
+                                                }
+
+                                                override fun onAdShowedFullScreenContent() {
+                                                    isShowingAd = true
                                                 }
                                             }
-
-                                            override fun onAdFailedToShowFullScreenContent(adError: AdError) {
-                                                appOpenAd = null
-                                                isShowingAd = false
-                                            }
-
-                                            override fun onAdShowedFullScreenContent() {
-                                                isShowingAd = true
-                                            }
-                                        }
-                                    appOpenAd?.fullScreenContentCallback = fullScreenContentCallback
-                                    appOpenAd?.show(currentActivity!!)
-                                } else {
-                                    fetchAd(adUnitId!!, BaseSplashAdsActivity.adsUnit[i].adFailed!!)
+                                        appOpenAd?.fullScreenContentCallback = fullScreenContentCallback
+                                        appOpenAd?.show(currentActivity!!)
+                                    } else {
+                                        fetchAd(adUnitId!!, BaseSplashAdsActivity.adsUnit[i].adFailed!!)
+                                    }
+                                } else if (BaseSplashAdsActivity.adsUnit[i].publishers == com.custom.ads.sdk.utils.Utils.CROSS_PROMOTION) {
+                                    showCrossAppOpenAds()
                                 }
-                            } else if (BaseSplashAdsActivity.adsUnit[i].publishers == com.custom.ads.sdk.utils.Utils.CROSS_PROMOTION) {
-                                showCrossAppOpenAds()
                             }
                         }
                     }

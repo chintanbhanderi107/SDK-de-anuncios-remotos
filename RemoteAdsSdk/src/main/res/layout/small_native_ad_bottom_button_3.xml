@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nativeView"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#F7F7F7">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/conAd"
@@ -105,6 +104,7 @@
             android:fontFamily="@font/poppins_bold"
             android:gravity="center"
             android:includeFontPadding="false"
+            android:paddingVertical="@dimen/_8sdp"
             android:text=""
             android:textAlignment="center"
             android:textColor="@color/white"

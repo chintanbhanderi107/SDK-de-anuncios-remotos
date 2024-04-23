@@ -13,7 +13,6 @@
         <com.google.android.gms.ads.nativead.NativeAdView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#F7F7F7"
             android:orientation="vertical">
 
             <RelativeLayout

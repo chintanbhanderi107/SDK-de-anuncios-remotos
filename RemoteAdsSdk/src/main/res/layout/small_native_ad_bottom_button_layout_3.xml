@@ -8,13 +8,12 @@
     <com.facebook.shimmer.ShimmerFrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <com.google.android.gms.ads.nativead.NativeAdView
             android:id="@+id/nativeView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#F7F7F7">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:id="@+id/conAd"
