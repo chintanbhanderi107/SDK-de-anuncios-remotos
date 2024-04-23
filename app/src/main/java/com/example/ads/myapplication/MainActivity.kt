@@ -19,6 +19,14 @@ class MainActivity : BaseSplashAdsActivity() {
         return relativeLayout
     }
 
+    override fun onCompleteSucceed() {
+
+    }
+
+    override fun onCompleteFailed() {
+
+    }
+
     override fun getDefaultAppOpenAdId(): String {
         return getString(R.string.app_open_ads)
     }
@@ -33,10 +41,6 @@ class MainActivity : BaseSplashAdsActivity() {
 
     override fun getDefaultInterstitialAdId(): String {
         return getString(R.string.inter_ads)
-    }
-
-    override fun onCompleted() {
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

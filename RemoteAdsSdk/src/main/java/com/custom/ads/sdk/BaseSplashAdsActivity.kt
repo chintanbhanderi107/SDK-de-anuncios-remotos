@@ -26,7 +26,8 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
     }
 
     abstract fun getLayoutView(): View
-    abstract fun onCompleted()
+    abstract fun onCompleteSucceed()
+    abstract fun onCompleteFailed()
     abstract fun getDefaultAppOpenAdId(): String
     abstract fun getDefaultBannerAdId(): String
     abstract fun getDefaultNativeAdId(): String
@@ -63,11 +64,11 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
 
                 AdsUtils.loadInterstitialAd(this@BaseSplashAdsActivity)
 
-                onCompleted()
+                onCompleteSucceed()
             }
 
             override fun onDataLoadFailed() {
-                onCompleted()
+                onCompleteFailed()
             }
         })
     }
