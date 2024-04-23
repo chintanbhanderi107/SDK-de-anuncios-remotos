@@ -11,7 +11,7 @@
         android:layout_marginStart="@dimen/_38sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:background="@drawable/cross_app_open_ad_layout_bg"
-        android:paddingVertical="@dimen/_3sdp">
+        android:paddingVertical="@dimen/_2sdp">
 
         <ImageView
             android:id="@+id/imgAdIcon"
@@ -21,7 +21,6 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/_10sdp"
             android:adjustViewBounds="true"
-            android:clickable="false"
             android:padding="@dimen/_5sdp"
             android:src="@mipmap/ic_launcher" />
 
@@ -32,7 +31,6 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_toEndOf="@id/imgAdIcon"
-            android:clickable="false"
             android:text="@string/app_name"
             android:textColor="@color/black"
             android:textSize="@dimen/_10ssp" />
@@ -45,7 +43,6 @@
             android:layout_marginEnd="@dimen/_8sdp"
             android:layout_toStartOf="@id/imgAdClose"
             android:alpha="0.8"
-            android:clickable="false"
             android:text="continue to app"
             android:textColor="@color/black"
             android:textSize="@dimen/_10ssp" />
@@ -57,7 +54,6 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/_8sdp"
             android:adjustViewBounds="true"
-            android:clickable="false"
             android:padding="@dimen/_5sdp"
             android:src="@drawable/round_arrow_forward_ios_24" />
     </RelativeLayout>

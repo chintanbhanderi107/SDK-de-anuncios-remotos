@@ -999,6 +999,7 @@ class AdsUtils {
             fullScreenDialog.setOnDismissListener {
                 AdsApplication.appOpenManager?.isAdShow = false
                 it.dismiss()
+                appOpenAdShowedListener.onCompleted()
             }
             if (!activity.isFinishing && !fullScreenDialog.isShowing) {
                 fullScreenDialog.show()
