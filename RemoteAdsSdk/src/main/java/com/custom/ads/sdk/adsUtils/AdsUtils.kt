@@ -1005,5 +1005,9 @@ class AdsUtils {
                 AdsApplication.appOpenManager?.isAdShow = true
             }
         }
+
+        fun destroyNativeAd() {
+            nativeAd?.destroy()
+        }
     }
 }
