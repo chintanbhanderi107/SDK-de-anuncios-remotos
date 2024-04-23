@@ -27,6 +27,10 @@ class MainActivity : BaseSplashAdsActivity() {
 
     }
 
+    override fun getRemoteAdsKey(): String {
+        return getString(R.string.firebase_key)
+    }
+
     override fun getDefaultAppOpenAdId(): String {
         return getString(R.string.app_open_ads)
     }

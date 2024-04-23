@@ -175,9 +175,7 @@ open class AdsApplication : Application() {
             val connectivityManager =
                 context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val activeNetworkInfo = connectivityManager.activeNetworkInfo
-            return activeNetworkInfo != null && activeNetworkInfo.isConnected &&
-                    (activeNetworkInfo.type == ConnectivityManager.TYPE_MOBILE ||
-                            activeNetworkInfo.type == ConnectivityManager.TYPE_WIFI)
+            return activeNetworkInfo != null && activeNetworkInfo.isConnected && (activeNetworkInfo.type == ConnectivityManager.TYPE_MOBILE || activeNetworkInfo.type == ConnectivityManager.TYPE_WIFI)
         }
     }
 }

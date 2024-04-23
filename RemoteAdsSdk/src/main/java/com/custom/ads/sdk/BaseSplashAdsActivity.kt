@@ -28,6 +28,7 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
     abstract fun getLayoutView(): View
     abstract fun onCompleteSucceed()
     abstract fun onCompleteFailed()
+    abstract fun getRemoteAdsKey(): String
     abstract fun getDefaultAppOpenAdId(): String
     abstract fun getDefaultBannerAdId(): String
     abstract fun getDefaultNativeAdId(): String
@@ -37,6 +38,7 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutView())
 
+        Utils.firebaseKey = getRemoteAdsKey()
         AdsApplication.defaultAppOpenAdId = getDefaultAppOpenAdId()
         AdsApplication.defaultBannerAdId = getDefaultBannerAdId()
         AdsApplication.defaultNativeAdId = getDefaultNativeAdId()
