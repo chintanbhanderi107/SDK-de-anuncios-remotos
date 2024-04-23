@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import android.net.ConnectivityManager
+import com.google.android.gms.ads.MobileAds
 
 
 open class AdsApplication : Application() {
@@ -11,6 +12,8 @@ open class AdsApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        MobileAds.initialize(this)
+
         appOpenManager = AppOpenManager(this)
         adsSharedPreferences = getSharedPreferences(adsPreferencesKey, Context.MODE_PRIVATE)
         adsEditor = adsSharedPreferences?.edit()
