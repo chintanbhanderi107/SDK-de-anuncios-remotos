@@ -15,13 +15,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8sdp"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/adAppIcon"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 app:layout_constraintBottom_toTopOf="@+id/adCallToAction"
                 app:layout_constraintEnd_toStartOf="@+id/imgAd"
                 app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +31,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -82,7 +84,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="10dp"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center_vertical"
                     android:includeFontPadding="false"
@@ -98,6 +99,7 @@
             android:id="@+id/adCallToAction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8sdp"
             android:layout_marginTop="5dp"
             android:background="@drawable/shape_ad_button"
             android:fontFamily="@font/poppins_bold"
