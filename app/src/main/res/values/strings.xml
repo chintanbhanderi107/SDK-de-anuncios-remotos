@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
 
-    <string name="firebase_key">video_maker_test_ads</string>
+    <string name="firebase_key">test_ads</string>
     <string name="banner_ads">/6499/example/banner</string>
     <string name="native_ads">/6499/example/native</string>
     <string name="inter_ads">/6499/example/interstitial</string>
