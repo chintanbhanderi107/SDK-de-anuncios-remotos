@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginHorizontal="@dimen/_6sdp"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -31,7 +31,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_5sdp"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -99,7 +101,8 @@
             android:id="@+id/adCallToAction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginHorizontal="@dimen/_6sdp"
+            android:layout_marginVertical="@dimen/_6sdp"
             android:layout_marginTop="5dp"
             android:background="@drawable/shape_ad_button"
             android:fontFamily="@font/poppins_bold"
