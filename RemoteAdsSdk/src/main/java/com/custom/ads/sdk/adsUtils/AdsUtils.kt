@@ -53,6 +53,8 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdView
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.logEvent
 
 class AdsUtils {
 
@@ -813,7 +815,7 @@ class AdsUtils {
                 shimmerLayout.stopShimmer()
                 shimmerLayout.visibility = View.GONE
                 flNative.visibility = View.VISIBLE
-                imageContainer.visibility =View.GONE
+                imageContainer.visibility = View.GONE
                 if (widthPixels >= 720 && heightPixels >= 1344) {
                     when (adSize) {
                         "four" -> {
@@ -1406,6 +1408,12 @@ class AdsUtils {
 
         fun destroyNativeAd() {
             nativeAd?.destroy()
+        }
+
+        fun sendFirebaseEvent(context: Context, eventName: String, paramEventName: String) {
+            FirebaseAnalytics.getInstance(context).logEvent(eventName) {
+                param("tracking_id", paramEventName)
+            }
         }
     }
 }
