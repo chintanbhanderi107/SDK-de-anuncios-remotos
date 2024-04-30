@@ -1,6 +1,8 @@
 package com.custom.ads.sdk
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -38,41 +40,47 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutView())
 
-        Utils.firebaseKey = getRemoteAdsKey()
-        AdsApplication.defaultAppOpenAdId = getDefaultAppOpenAdId()
-        AdsApplication.defaultBannerAdId = getDefaultBannerAdId()
-        AdsApplication.defaultNativeAdId = getDefaultNativeAdId()
-        AdsApplication.defaultInterstitialAdId = getDefaultInterstitialAdId()
+        if (AdsApplication.isNetworkAvailable(this@BaseSplashAdsActivity)) {
+            Utils.firebaseKey = getRemoteAdsKey()
+            AdsApplication.defaultAppOpenAdId = getDefaultAppOpenAdId()
+            AdsApplication.defaultBannerAdId = getDefaultBannerAdId()
+            AdsApplication.defaultNativeAdId = getDefaultNativeAdId()
+            AdsApplication.defaultInterstitialAdId = getDefaultInterstitialAdId()
 
-        initData(object : DataLoadCompleteListener {
-            override fun onDataLoaded() {
-                adsUnit = Gson().fromJson(
-                    AdsApplication.getAdsUnits(),
-                    object : TypeToken<List<RemoteAds.AdUnit>>() {}.type
-                )
+            initData(object : DataLoadCompleteListener {
+                override fun onDataLoaded() {
+                    adsUnit = Gson().fromJson(
+                        AdsApplication.getAdsUnits(),
+                        object : TypeToken<List<RemoteAds.AdUnit>>() {}.type
+                    )
 
-                crossNativeAds = Gson().fromJson(
-                    AdsApplication.getCrossNativeAds(), RemoteAds.Native::class.java
-                )
-                crossBannerAds = Gson().fromJson(
-                    AdsApplication.getCrossBannerAds(), RemoteAds.Banner::class.java
-                )
-                crossInterstitialAds = Gson().fromJson(
-                    AdsApplication.getCrossInterstitialAds(), RemoteAds.Interstitial::class.java
-                )
-                crossOpenAppAds = Gson().fromJson(
-                    AdsApplication.getCrossOpenAppAds(), RemoteAds.Openapp::class.java
-                )
+                    crossNativeAds = Gson().fromJson(
+                        AdsApplication.getCrossNativeAds(), RemoteAds.Native::class.java
+                    )
+                    crossBannerAds = Gson().fromJson(
+                        AdsApplication.getCrossBannerAds(), RemoteAds.Banner::class.java
+                    )
+                    crossInterstitialAds = Gson().fromJson(
+                        AdsApplication.getCrossInterstitialAds(), RemoteAds.Interstitial::class.java
+                    )
+                    crossOpenAppAds = Gson().fromJson(
+                        AdsApplication.getCrossOpenAppAds(), RemoteAds.Openapp::class.java
+                    )
 
-                AdsUtils.loadInterstitialAd(this@BaseSplashAdsActivity)
+                    AdsUtils.loadInterstitialAd(this@BaseSplashAdsActivity)
 
+                    onCompleteSucceed()
+                }
+
+                override fun onDataLoadFailed() {
+                    onCompleteFailed()
+                }
+            })
+        } else {
+            Handler(Looper.getMainLooper()).postDelayed({
                 onCompleteSucceed()
-            }
-
-            override fun onDataLoadFailed() {
-                onCompleteFailed()
-            }
-        })
+            }, 1500)
+        }
     }
 
     private fun initData(listener: DataLoadCompleteListener) {
