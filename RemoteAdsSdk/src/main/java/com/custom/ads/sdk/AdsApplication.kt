@@ -94,6 +94,14 @@ open class AdsApplication : Application() {
             return adsSharedPreferences?.getBoolean("home_screen_ads", false) ?: false
         }
 
+        fun setPremiumFirstTimeAds(premiumFirstTimeAds: Boolean) {
+            adsEditor?.putBoolean("premium_first_time_ads", premiumFirstTimeAds)?.apply()
+        }
+
+        fun getPremiumFirstTimeAds(): Boolean {
+            return adsSharedPreferences?.getBoolean("premium_first_time_ads", false) ?: false
+        }
+
         fun setUpdatedType(updatedType: Int) {
             adsEditor?.putInt("updated_type", updatedType)?.apply()
         }
