@@ -76,7 +76,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1792042c-fac5-4976-9d7a-47840ed4197e" name="Changes" comment="Firestore added" />
+    <list default="true" id="1792042c-fac5-4976-9d7a-47840ed4197e" name="Changes" comment="Firestore added">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,7 +130,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Remote Ads Sdk/app&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Remote Ads Sdk/app/src/main/res/drawable&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Dependencies&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -140,6 +142,7 @@
       <recent name="com.example.ads.myapplication" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Remote Ads Sdk\app\src\main\res\drawable" />
       <recent name="D:\Remote Ads Sdk\app" />
       <recent name="D:\Remote Ads Sdk\RemoteAdsSdk" />
       <recent name="D:\Remote Ads Sdk" />
@@ -231,14 +234,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1713422566307</updated>
-    </task>
-    <task id="LOCAL-00001" summary="init Code">
-      <option name="closed" value="true" />
-      <created>1713422798201</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1713422798201</updated>
     </task>
     <task id="LOCAL-00002" summary="init Code">
       <option name="closed" value="true" />
@@ -624,7 +619,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715146156891</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Firestore added">
+      <option name="closed" value="true" />
+      <created>1715146733581</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1715146733582</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
