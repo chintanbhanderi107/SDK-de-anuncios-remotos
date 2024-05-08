@@ -72,6 +72,5 @@ class MainActivity : BaseSplashAdsActivity() {
         super.onCreate(savedInstanceState)
 
         AdsApplication.setPremium(false)
-        AdsApplication.setHello(0)
     }
 }
