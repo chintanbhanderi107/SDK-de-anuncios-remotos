@@ -12,6 +12,7 @@ import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
 import com.custom.ads.sdk.databinding.CrossPromotionInterstitialAdBinding
 import com.custom.ads.sdk.interfaces.CrossInterstitialAdShowedListener
+import java.util.Calendar
 
 
 class CrossAdInterstitial : DialogFragment() {
@@ -36,6 +37,7 @@ class CrossAdInterstitial : DialogFragment() {
         binding = CrossPromotionInterstitialAdBinding.inflate(inflater, null, false)
 
         AdsApplication.appOpenManager?.isAdShow = true
+        AdsApplication.setLastAdShowedTime(Calendar.getInstance().timeInMillis)
 
         binding.imgClose.setOnClickListener {
             dismiss()

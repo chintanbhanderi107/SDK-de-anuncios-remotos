@@ -97,15 +97,15 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/adCallToAction"
-                    android:layout_width="wrap_content"
-                    android:layout_height="38dp"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="42dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/insta_back"
                     android:backgroundTint="@color/shimmerColor"
-                    android:fontFamily="@font/poppins_bold"
+                    android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
                     android:includeFontPadding="false"
                     android:paddingHorizontal="15dp"
@@ -113,7 +113,7 @@
                     android:text=""
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="13sp" />
+                    android:textSize="@dimen/_12ssp" />
             </RelativeLayout>
         </com.google.android.gms.ads.nativead.NativeAdView>
     </com.facebook.shimmer.ShimmerFrameLayout>

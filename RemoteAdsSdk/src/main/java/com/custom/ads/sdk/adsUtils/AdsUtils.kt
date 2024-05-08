@@ -55,6 +55,7 @@ import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.logEvent
+import java.util.Calendar
 
 class AdsUtils {
 
@@ -1096,101 +1097,27 @@ class AdsUtils {
             if (AdsApplication.isNetworkAvailable(activity)) {
                 if (!AdsApplication.isPremium()) {
                     if (AdsApplication.getShowAds()) {
-                        if (AdsApplication.getHomeScreenAds()) {
-                            for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
-                                if (BaseSplashAdsActivity.adsUnit[i].adsName == screenName) {
-                                    if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
-                                        if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
-                                            if (interstitialAd != null) {
-                                                interstitialAd?.show(activity)
-                                                AdsApplication.appOpenManager?.isAdShow = true
-                                                interstitialAd?.fullScreenContentCallback =
-                                                    object : FullScreenContentCallback() {
-                                                        override fun onAdDismissedFullScreenContent() {
-                                                            super.onAdDismissedFullScreenContent()
-                                                            interstitialAd = null
-                                                            AdsApplication.adsClickCounter = 0
-                                                            AdsApplication.setHomeScreenAds(false)
-                                                            AdsApplication.appOpenManager?.isAdShow =
-                                                                false
-                                                            interstitialAdShowedListener.onCompleted()
-                                                            loadInterstitialAd(activity)
-                                                        }
-
-                                                        override fun onAdFailedToShowFullScreenContent(
-                                                            p0: AdError
-                                                        ) {
-                                                            super.onAdFailedToShowFullScreenContent(
-                                                                p0
-                                                            )
-                                                            interstitialAd = null
-                                                            AdsApplication.adsClickCounter = 0
-                                                            AdsApplication.setHomeScreenAds(false)
-                                                            AdsApplication.appOpenManager?.isAdShow =
-                                                                false
-                                                            interstitialAdShowedListener.onCompleted()
-                                                        }
-                                                    }
-                                            } else {
-                                                if (BaseSplashAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
-                                                    val appCompatActivity =
-                                                        activity as? AppCompatActivity
-                                                    appCompatActivity?.supportFragmentManager?.let {
-                                                        val crossAdInterstitial =
-                                                            CrossAdInterstitial()
-                                                        crossAdInterstitial.setCrossPromotionListener(
-                                                            object :
-                                                                CrossInterstitialAdShowedListener {
-                                                                override fun onCompleted() {
-                                                                    AdsApplication.setHomeScreenAds(
-                                                                        false
-                                                                    )
-                                                                    interstitialAdShowedListener.onCompleted()
-                                                                }
-                                                            })
-                                                        crossAdInterstitial.show(
-                                                            it, Utils.CROSS_PROMOTION_INTERSTITIAL
-                                                        )
-                                                    }
-                                                } else {
-                                                    interstitialAdShowedListener.onCompleted()
-                                                }
-                                            }
-                                        } else if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
-                                            val appCompatActivity = activity as? AppCompatActivity
-                                            appCompatActivity?.supportFragmentManager?.let {
-                                                val crossAdInterstitial = CrossAdInterstitial()
-                                                crossAdInterstitial.setCrossPromotionListener(object :
-                                                    CrossInterstitialAdShowedListener {
-                                                    override fun onCompleted() {
-                                                        AdsApplication.setHomeScreenAds(false)
-                                                        interstitialAdShowedListener.onCompleted()
-                                                    }
-                                                })
-                                                crossAdInterstitial.show(
-                                                    it, Utils.CROSS_PROMOTION_INTERSTITIAL
-                                                )
-                                            }
-                                        }
-                                    } else {
-                                        interstitialAdShowedListener.onCompleted()
-                                    }
-                                }
-                            }
-                        } else {
-                            if (AdsApplication.adsClickCounter >= AdsApplication.getUserClickCounter()) {
+                        val timeDifference =
+                            Calendar.getInstance().timeInMillis - AdsApplication.getLastAdShowedTime()
+                        if (AdsApplication.getTimingAd()) {
+                            if (AdsApplication.getHomeScreenAds()) {
                                 for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
                                     if (BaseSplashAdsActivity.adsUnit[i].adsName == screenName) {
                                         if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
                                             if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
                                                 if (interstitialAd != null) {
                                                     interstitialAd?.show(activity)
+                                                    AdsApplication.setLastAdShowedTime(Calendar.getInstance().timeInMillis)
+                                                    AdsApplication.appOpenManager?.isAdShow = true
                                                     interstitialAd?.fullScreenContentCallback =
                                                         object : FullScreenContentCallback() {
                                                             override fun onAdDismissedFullScreenContent() {
                                                                 super.onAdDismissedFullScreenContent()
                                                                 interstitialAd = null
                                                                 AdsApplication.adsClickCounter = 0
+                                                                AdsApplication.setHomeScreenAds(
+                                                                    false
+                                                                )
                                                                 AdsApplication.appOpenManager?.isAdShow =
                                                                     false
                                                                 interstitialAdShowedListener.onCompleted()
@@ -1205,6 +1132,9 @@ class AdsUtils {
                                                                 )
                                                                 interstitialAd = null
                                                                 AdsApplication.adsClickCounter = 0
+                                                                AdsApplication.setHomeScreenAds(
+                                                                    false
+                                                                )
                                                                 AdsApplication.appOpenManager?.isAdShow =
                                                                     false
                                                                 interstitialAdShowedListener.onCompleted()
@@ -1221,6 +1151,9 @@ class AdsUtils {
                                                                 object :
                                                                     CrossInterstitialAdShowedListener {
                                                                     override fun onCompleted() {
+                                                                        AdsApplication.setHomeScreenAds(
+                                                                            false
+                                                                        )
                                                                         interstitialAdShowedListener.onCompleted()
                                                                     }
                                                                 })
@@ -1239,8 +1172,12 @@ class AdsUtils {
                                                 appCompatActivity?.supportFragmentManager?.let {
                                                     val crossAdInterstitial = CrossAdInterstitial()
                                                     crossAdInterstitial.setCrossPromotionListener(
-                                                        object : CrossInterstitialAdShowedListener {
+                                                        object :
+                                                            CrossInterstitialAdShowedListener {
                                                             override fun onCompleted() {
+                                                                AdsApplication.setHomeScreenAds(
+                                                                    false
+                                                                )
                                                                 interstitialAdShowedListener.onCompleted()
                                                             }
                                                         })
@@ -1255,7 +1192,270 @@ class AdsUtils {
                                     }
                                 }
                             } else {
-                                interstitialAdShowedListener.onCompleted()
+                                if (timeDifference >= AdsApplication.getShowTime()) {
+                                    for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
+                                        if (BaseSplashAdsActivity.adsUnit[i].adsName == screenName) {
+                                            if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
+                                                if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
+                                                    if (interstitialAd != null) {
+                                                        interstitialAd?.show(activity)
+                                                        AdsApplication.setLastAdShowedTime(Calendar.getInstance().timeInMillis)
+                                                        interstitialAd?.fullScreenContentCallback =
+                                                            object : FullScreenContentCallback() {
+                                                                override fun onAdDismissedFullScreenContent() {
+                                                                    super.onAdDismissedFullScreenContent()
+                                                                    interstitialAd = null
+                                                                    AdsApplication.adsClickCounter =
+                                                                        0
+                                                                    AdsApplication.appOpenManager?.isAdShow =
+                                                                        false
+                                                                    interstitialAdShowedListener.onCompleted()
+                                                                    loadInterstitialAd(activity)
+                                                                }
+
+                                                                override fun onAdFailedToShowFullScreenContent(
+                                                                    p0: AdError
+                                                                ) {
+                                                                    super.onAdFailedToShowFullScreenContent(
+                                                                        p0
+                                                                    )
+                                                                    interstitialAd = null
+                                                                    AdsApplication.adsClickCounter =
+                                                                        0
+                                                                    AdsApplication.appOpenManager?.isAdShow =
+                                                                        false
+                                                                    interstitialAdShowedListener.onCompleted()
+                                                                }
+                                                            }
+                                                    } else {
+                                                        if (BaseSplashAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
+                                                            val appCompatActivity =
+                                                                activity as? AppCompatActivity
+                                                            appCompatActivity?.supportFragmentManager?.let {
+                                                                val crossAdInterstitial =
+                                                                    CrossAdInterstitial()
+                                                                crossAdInterstitial.setCrossPromotionListener(
+                                                                    object :
+                                                                        CrossInterstitialAdShowedListener {
+                                                                        override fun onCompleted() {
+                                                                            interstitialAdShowedListener.onCompleted()
+                                                                        }
+                                                                    })
+                                                                crossAdInterstitial.show(
+                                                                    it,
+                                                                    Utils.CROSS_PROMOTION_INTERSTITIAL
+                                                                )
+                                                                AdsApplication.setLastAdShowedTime(
+                                                                    Calendar.getInstance().timeInMillis
+                                                                )
+                                                            }
+                                                        } else {
+                                                            interstitialAdShowedListener.onCompleted()
+                                                        }
+                                                    }
+                                                } else if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
+                                                    val appCompatActivity =
+                                                        activity as? AppCompatActivity
+                                                    appCompatActivity?.supportFragmentManager?.let {
+                                                        val crossAdInterstitial =
+                                                            CrossAdInterstitial()
+                                                        crossAdInterstitial.setCrossPromotionListener(
+                                                            object :
+                                                                CrossInterstitialAdShowedListener {
+                                                                override fun onCompleted() {
+                                                                    interstitialAdShowedListener.onCompleted()
+                                                                }
+                                                            })
+                                                        crossAdInterstitial.show(
+                                                            it, Utils.CROSS_PROMOTION_INTERSTITIAL
+                                                        )
+                                                        AdsApplication.setLastAdShowedTime(Calendar.getInstance().timeInMillis)
+                                                    }
+                                                }
+                                            } else {
+                                                interstitialAdShowedListener.onCompleted()
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    interstitialAdShowedListener.onCompleted()
+                                }
+                            }
+                        } else {
+                            if (AdsApplication.getHomeScreenAds()) {
+                                for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
+                                    if (BaseSplashAdsActivity.adsUnit[i].adsName == screenName) {
+                                        if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
+                                            if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
+                                                if (interstitialAd != null) {
+                                                    interstitialAd?.show(activity)
+                                                    AdsApplication.appOpenManager?.isAdShow = true
+                                                    interstitialAd?.fullScreenContentCallback =
+                                                        object : FullScreenContentCallback() {
+                                                            override fun onAdDismissedFullScreenContent() {
+                                                                super.onAdDismissedFullScreenContent()
+                                                                interstitialAd = null
+                                                                AdsApplication.adsClickCounter = 0
+                                                                AdsApplication.setHomeScreenAds(
+                                                                    false
+                                                                )
+                                                                AdsApplication.appOpenManager?.isAdShow =
+                                                                    false
+                                                                interstitialAdShowedListener.onCompleted()
+                                                                loadInterstitialAd(activity)
+                                                            }
+
+                                                            override fun onAdFailedToShowFullScreenContent(
+                                                                p0: AdError
+                                                            ) {
+                                                                super.onAdFailedToShowFullScreenContent(
+                                                                    p0
+                                                                )
+                                                                interstitialAd = null
+                                                                AdsApplication.adsClickCounter = 0
+                                                                AdsApplication.setHomeScreenAds(
+                                                                    false
+                                                                )
+                                                                AdsApplication.appOpenManager?.isAdShow =
+                                                                    false
+                                                                interstitialAdShowedListener.onCompleted()
+                                                            }
+                                                        }
+                                                } else {
+                                                    if (BaseSplashAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
+                                                        val appCompatActivity =
+                                                            activity as? AppCompatActivity
+                                                        appCompatActivity?.supportFragmentManager?.let {
+                                                            val crossAdInterstitial =
+                                                                CrossAdInterstitial()
+                                                            crossAdInterstitial.setCrossPromotionListener(
+                                                                object :
+                                                                    CrossInterstitialAdShowedListener {
+                                                                    override fun onCompleted() {
+                                                                        AdsApplication.setHomeScreenAds(
+                                                                            false
+                                                                        )
+                                                                        interstitialAdShowedListener.onCompleted()
+                                                                    }
+                                                                })
+                                                            crossAdInterstitial.show(
+                                                                it,
+                                                                Utils.CROSS_PROMOTION_INTERSTITIAL
+                                                            )
+                                                        }
+                                                    } else {
+                                                        interstitialAdShowedListener.onCompleted()
+                                                    }
+                                                }
+                                            } else if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
+                                                val appCompatActivity =
+                                                    activity as? AppCompatActivity
+                                                appCompatActivity?.supportFragmentManager?.let {
+                                                    val crossAdInterstitial = CrossAdInterstitial()
+                                                    crossAdInterstitial.setCrossPromotionListener(
+                                                        object :
+                                                            CrossInterstitialAdShowedListener {
+                                                            override fun onCompleted() {
+                                                                AdsApplication.setHomeScreenAds(
+                                                                    false
+                                                                )
+                                                                interstitialAdShowedListener.onCompleted()
+                                                            }
+                                                        })
+                                                    crossAdInterstitial.show(
+                                                        it, Utils.CROSS_PROMOTION_INTERSTITIAL
+                                                    )
+                                                }
+                                            }
+                                        } else {
+                                            interstitialAdShowedListener.onCompleted()
+                                        }
+                                    }
+                                }
+                            } else {
+                                if (AdsApplication.adsClickCounter >= AdsApplication.getUserClickCounter()) {
+                                    for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
+                                        if (BaseSplashAdsActivity.adsUnit[i].adsName == screenName) {
+                                            if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
+                                                if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
+                                                    if (interstitialAd != null) {
+                                                        interstitialAd?.show(activity)
+                                                        interstitialAd?.fullScreenContentCallback =
+                                                            object : FullScreenContentCallback() {
+                                                                override fun onAdDismissedFullScreenContent() {
+                                                                    super.onAdDismissedFullScreenContent()
+                                                                    interstitialAd = null
+                                                                    AdsApplication.adsClickCounter =
+                                                                        0
+                                                                    AdsApplication.appOpenManager?.isAdShow =
+                                                                        false
+                                                                    interstitialAdShowedListener.onCompleted()
+                                                                    loadInterstitialAd(activity)
+                                                                }
+
+                                                                override fun onAdFailedToShowFullScreenContent(
+                                                                    p0: AdError
+                                                                ) {
+                                                                    super.onAdFailedToShowFullScreenContent(
+                                                                        p0
+                                                                    )
+                                                                    interstitialAd = null
+                                                                    AdsApplication.adsClickCounter =
+                                                                        0
+                                                                    AdsApplication.appOpenManager?.isAdShow =
+                                                                        false
+                                                                    interstitialAdShowedListener.onCompleted()
+                                                                }
+                                                            }
+                                                    } else {
+                                                        if (BaseSplashAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
+                                                            val appCompatActivity =
+                                                                activity as? AppCompatActivity
+                                                            appCompatActivity?.supportFragmentManager?.let {
+                                                                val crossAdInterstitial =
+                                                                    CrossAdInterstitial()
+                                                                crossAdInterstitial.setCrossPromotionListener(
+                                                                    object :
+                                                                        CrossInterstitialAdShowedListener {
+                                                                        override fun onCompleted() {
+                                                                            interstitialAdShowedListener.onCompleted()
+                                                                        }
+                                                                    })
+                                                                crossAdInterstitial.show(
+                                                                    it,
+                                                                    Utils.CROSS_PROMOTION_INTERSTITIAL
+                                                                )
+                                                            }
+                                                        } else {
+                                                            interstitialAdShowedListener.onCompleted()
+                                                        }
+                                                    }
+                                                } else if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
+                                                    val appCompatActivity =
+                                                        activity as? AppCompatActivity
+                                                    appCompatActivity?.supportFragmentManager?.let {
+                                                        val crossAdInterstitial =
+                                                            CrossAdInterstitial()
+                                                        crossAdInterstitial.setCrossPromotionListener(
+                                                            object :
+                                                                CrossInterstitialAdShowedListener {
+                                                                override fun onCompleted() {
+                                                                    interstitialAdShowedListener.onCompleted()
+                                                                }
+                                                            })
+                                                        crossAdInterstitial.show(
+                                                            it, Utils.CROSS_PROMOTION_INTERSTITIAL
+                                                        )
+                                                    }
+                                                }
+                                            } else {
+                                                interstitialAdShowedListener.onCompleted()
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    interstitialAdShowedListener.onCompleted()
+                                }
                             }
                         }
                     } else {
@@ -1275,70 +1475,149 @@ class AdsUtils {
             if (AdsApplication.isNetworkAvailable(activity)) {
                 if (!AdsApplication.isPremium()) {
                     if (AdsApplication.getShowAds()) {
-                        for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
-                            if (BaseSplashAdsActivity.adsUnit[i].adsName == screenName) {
-                                if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
-                                    if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
-                                        val loadCallback: AppOpenAd.AppOpenAdLoadCallback =
-                                            object : AppOpenAd.AppOpenAdLoadCallback() {
-                                                override fun onAdLoaded(ad: AppOpenAd) {
-                                                    Log.e("TAG", "onAppOpenAdLoaded: ")
-                                                    appOpenAd = ad
-                                                    appOpenAd?.show(activity)
-                                                    AdsApplication.appOpenManager?.isAdShow = true
-                                                    ad.fullScreenContentCallback =
-                                                        object : FullScreenContentCallback() {
-                                                            override fun onAdDismissedFullScreenContent() {
-                                                                appOpenAd = null
-                                                                appOpenAdShowedListener.onCompleted()
-                                                                AdsApplication.appOpenManager?.isAdShow =
-                                                                    false
-                                                            }
+                        val timeDifference =
+                            Calendar.getInstance().timeInMillis - AdsApplication.getLastAdShowedTime()
+                        if (AdsApplication.getTimingAd()) {
+                            if (timeDifference >= AdsApplication.getShowTime()) {
+                                for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
+                                    if (BaseSplashAdsActivity.adsUnit[i].adsName == screenName) {
+                                        if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
+                                            if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
+                                                val loadCallback: AppOpenAd.AppOpenAdLoadCallback =
+                                                    object : AppOpenAd.AppOpenAdLoadCallback() {
+                                                        override fun onAdLoaded(ad: AppOpenAd) {
+                                                            Log.e("TAG", "onAppOpenAdLoaded: ")
+                                                            appOpenAd = ad
+                                                            appOpenAd?.show(activity)
+                                                            AdsApplication.setLastAdShowedTime(Calendar.getInstance().timeInMillis)
+                                                            AdsApplication.appOpenManager?.isAdShow =
+                                                                true
+                                                            ad.fullScreenContentCallback =
+                                                                object : FullScreenContentCallback() {
+                                                                    override fun onAdDismissedFullScreenContent() {
+                                                                        appOpenAd = null
+                                                                        appOpenAdShowedListener.onCompleted()
+                                                                        AdsApplication.appOpenManager?.isAdShow =
+                                                                            false
+                                                                    }
 
-                                                            override fun onAdFailedToShowFullScreenContent(
-                                                                adError: AdError
-                                                            ) {
-                                                                super.onAdFailedToShowFullScreenContent(
-                                                                    adError
+                                                                    override fun onAdFailedToShowFullScreenContent(
+                                                                        adError: AdError
+                                                                    ) {
+                                                                        super.onAdFailedToShowFullScreenContent(
+                                                                            adError
+                                                                        )
+                                                                        appOpenAd = null
+                                                                        appOpenAdShowedListener.onCompleted()
+                                                                        AdsApplication.appOpenManager?.isAdShow =
+                                                                            false
+                                                                    }
+                                                                }
+                                                        }
+
+                                                        override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+                                                            Log.e(
+                                                                "TAG",
+                                                                "onAppOpenAdFailedToLoad: ${loadAdError.message}"
+                                                            )
+                                                            if (BaseSplashAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
+                                                                showCrossAppOpenAds(
+                                                                    activity, appOpenAdShowedListener
                                                                 )
+                                                            } else {
                                                                 appOpenAd = null
                                                                 appOpenAdShowedListener.onCompleted()
                                                                 AdsApplication.appOpenManager?.isAdShow =
                                                                     false
                                                             }
                                                         }
-                                                }
-
-                                                override fun onAdFailedToLoad(loadAdError: LoadAdError) {
-                                                    Log.e(
-                                                        "TAG",
-                                                        "onAppOpenAdFailedToLoad: ${loadAdError.message}"
-                                                    )
-                                                    if (BaseSplashAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
-                                                        showCrossAppOpenAds(
-                                                            activity, appOpenAdShowedListener
-                                                        )
-                                                    } else {
-                                                        appOpenAd = null
-                                                        appOpenAdShowedListener.onCompleted()
+                                                    }
+                                                AppOpenAd.load(
+                                                    activity,
+                                                    if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds!! else AdsApplication.defaultNativeAdId,
+                                                    AdRequest.Builder().build(),
+                                                    loadCallback
+                                                )
+                                            } else if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
+                                                showCrossAppOpenAds(
+                                                    activity, appOpenAdShowedListener
+                                                )
+                                            }
+                                        } else {
+                                            appOpenAdShowedListener.onCompleted()
+                                        }
+                                    }
+                                }
+                            } else {
+                                appOpenAdShowedListener.onCompleted()
+                            }
+                        } else {
+                            for (i in 0 until BaseSplashAdsActivity.adsUnit.size) {
+                                if (BaseSplashAdsActivity.adsUnit[i].adsName == screenName) {
+                                    if (BaseSplashAdsActivity.adsUnit[i].enableAds!!) {
+                                        if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.AD_UNIT) {
+                                            val loadCallback: AppOpenAd.AppOpenAdLoadCallback =
+                                                object : AppOpenAd.AppOpenAdLoadCallback() {
+                                                    override fun onAdLoaded(ad: AppOpenAd) {
+                                                        Log.e("TAG", "onAppOpenAdLoaded: ")
+                                                        appOpenAd = ad
+                                                        appOpenAd?.show(activity)
                                                         AdsApplication.appOpenManager?.isAdShow =
-                                                            false
+                                                            true
+                                                        ad.fullScreenContentCallback =
+                                                            object : FullScreenContentCallback() {
+                                                                override fun onAdDismissedFullScreenContent() {
+                                                                    appOpenAd = null
+                                                                    appOpenAdShowedListener.onCompleted()
+                                                                    AdsApplication.appOpenManager?.isAdShow =
+                                                                        false
+                                                                }
+
+                                                                override fun onAdFailedToShowFullScreenContent(
+                                                                    adError: AdError
+                                                                ) {
+                                                                    super.onAdFailedToShowFullScreenContent(
+                                                                        adError
+                                                                    )
+                                                                    appOpenAd = null
+                                                                    appOpenAdShowedListener.onCompleted()
+                                                                    AdsApplication.appOpenManager?.isAdShow =
+                                                                        false
+                                                                }
+                                                            }
+                                                    }
+
+                                                    override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+                                                        Log.e(
+                                                            "TAG",
+                                                            "onAppOpenAdFailedToLoad: ${loadAdError.message}"
+                                                        )
+                                                        if (BaseSplashAdsActivity.adsUnit[i].adFailed == Utils.CROSS_PROMOTION) {
+                                                            showCrossAppOpenAds(
+                                                                activity, appOpenAdShowedListener
+                                                            )
+                                                        } else {
+                                                            appOpenAd = null
+                                                            appOpenAdShowedListener.onCompleted()
+                                                            AdsApplication.appOpenManager?.isAdShow =
+                                                                false
+                                                        }
                                                     }
                                                 }
-                                            }
-                                        AppOpenAd.load(
-                                            activity,
-                                            if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds!! else AdsApplication.defaultNativeAdId,
-                                            AdRequest.Builder().build(),
-                                            loadCallback
-                                        )
-                                    } else if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
-                                        showCrossAppOpenAds(
-                                            activity, appOpenAdShowedListener
-                                        )
+                                            AppOpenAd.load(
+                                                activity,
+                                                if (BaseSplashAdsActivity.adsUnit[i].idAds != null) BaseSplashAdsActivity.adsUnit[i].idAds!! else AdsApplication.defaultNativeAdId,
+                                                AdRequest.Builder().build(),
+                                                loadCallback
+                                            )
+                                        } else if (BaseSplashAdsActivity.adsUnit[i].publishers == Utils.CROSS_PROMOTION) {
+                                            showCrossAppOpenAds(
+                                                activity, appOpenAdShowedListener
+                                            )
+                                        }
+                                    } else {
+                                        appOpenAdShowedListener.onCompleted()
                                     }
-                                } else {
-                                    appOpenAdShowedListener.onCompleted()
                                 }
                             }
                         }
@@ -1402,6 +1681,7 @@ class AdsUtils {
             }
             if (!activity.isFinishing && !fullScreenDialog.isShowing) {
                 fullScreenDialog.show()
+                AdsApplication.setLastAdShowedTime(Calendar.getInstance().timeInMillis)
                 AdsApplication.appOpenManager?.isAdShow = true
             }
         }

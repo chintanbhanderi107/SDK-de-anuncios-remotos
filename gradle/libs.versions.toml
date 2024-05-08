@@ -1,5 +1,5 @@
 [versions]
-agp = "8.3.2"
+agp = "8.4.0"
 kotlin = "1.9.0"
 coreKtx = "1.12.0"
 junit = "4.13.2"
@@ -31,6 +31,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseAnalytics" }
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version = "" }
 firebase-config = { group = "com.google.firebase", name = "firebase-config", version = "" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version = "" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 gms-ads = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "ads" }
 facebook-shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmer" }

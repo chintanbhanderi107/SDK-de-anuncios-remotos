@@ -174,6 +174,81 @@ open class AdsApplication : Application() {
             return adsSharedPreferences?.getBoolean("is_premium", false) ?: false
         }
 
+        fun setWeeklyPremiumKey(weeklyPremiumKey: String) {
+            adsEditor?.putString("weekly_premium_key", weeklyPremiumKey)?.apply()
+        }
+
+        fun getWeeklyPremiumKey(): String {
+            return adsSharedPreferences?.getString("weekly_premium_key", "weekly_key")
+                ?: "weekly_key"
+        }
+
+        fun setMonthlyPremiumKey(monthlyPremiumKey: String) {
+            adsEditor?.putString("monthly_premium_key", monthlyPremiumKey)?.apply()
+        }
+
+        fun getMonthlyPremiumKey(): String {
+            return adsSharedPreferences?.getString("monthly_premium_key", "monthly_key")
+                ?: "monthly_key"
+        }
+
+        fun setYearlyPremiumKey(yearlyPremiumKey: String) {
+            adsEditor?.putString("yearly_premium_key", yearlyPremiumKey)?.apply()
+        }
+
+        fun getYearlyPremiumKey(): String {
+            return adsSharedPreferences?.getString("yearly_premium_key", "yearly_key")
+                ?: "yearly_key"
+        }
+
+        fun setWeeklyPrice(weeklyPrice: String) {
+            adsEditor?.putString("weekly_price", weeklyPrice)?.apply()
+        }
+
+        fun getWeeklyPrice(): String {
+            return adsSharedPreferences?.getString("weekly_price", "199") ?: "199"
+        }
+
+        fun setMonthlyPrice(monthlyPrice: String) {
+            adsEditor?.putString("monthly_price", monthlyPrice)?.apply()
+        }
+
+        fun getMonthlyPrice(): String {
+            return adsSharedPreferences?.getString("monthly_price", "199") ?: "199"
+        }
+
+        fun setYearlyPrice(yearlyPrice: String) {
+            adsEditor?.putString("yearly_price", yearlyPrice)?.apply()
+        }
+
+        fun getYearlyPrice(): String {
+            return adsSharedPreferences?.getString("yearly_price", "1449") ?: "1449"
+        }
+
+        fun setTimingAd(timingAd: Boolean) {
+            adsEditor?.putBoolean("timing_ad", timingAd)?.apply()
+        }
+
+        fun getTimingAd(): Boolean {
+            return adsSharedPreferences?.getBoolean("timing_ad", false) ?: false
+        }
+
+        fun setShowTime(showTime: Long) {
+            adsEditor?.putLong("show_time", showTime)?.apply()
+        }
+
+        fun getShowTime(): Long {
+            return adsSharedPreferences?.getLong("show_time", 0L) ?: 0L
+        }
+
+        fun setLastAdShowedTime(lastAdShowedTime: Long) {
+            adsEditor?.putLong("ad_showed_time", lastAdShowedTime)?.apply()
+        }
+
+        fun getLastAdShowedTime(): Long {
+            return adsSharedPreferences?.getLong("ad_showed_time", 0L) ?: 0L
+        }
+
         fun isNetworkAvailable(context: Context): Boolean {
             val connectivityManager =
                 context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

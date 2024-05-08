@@ -110,18 +110,18 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/adCallToAction"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/shape_ad_button"
                     android:backgroundTint="@color/shimmerColor"
-                    android:fontFamily="@font/poppins_bold"
+                    android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
                     android:includeFontPadding="false"
                     android:stateListAnimator="@null"
                     android:text=""
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/_12ssp" />
             </LinearLayout>
         </com.google.android.gms.ads.nativead.NativeAdView>
     </com.facebook.shimmer.ShimmerFrameLayout>

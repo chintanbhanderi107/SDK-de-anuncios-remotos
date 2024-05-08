@@ -64,6 +64,7 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.config)
+    implementation(libs.firebase.firestore)
     implementation(libs.gson)
     implementation(libs.gms.ads)
     implementation(libs.facebook.shimmer)

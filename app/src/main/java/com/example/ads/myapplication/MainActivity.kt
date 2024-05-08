@@ -1,13 +1,20 @@
 package com.example.ads.myapplication
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import com.custom.ads.sdk.AdsApplication
 import com.custom.ads.sdk.BaseSplashAdsActivity
+import com.custom.ads.sdk.adsUtils.AdsUtils
+import com.custom.ads.sdk.interfaces.AppOpenAdShowedListener
+import com.custom.ads.sdk.utils.ConfigType
 
 class MainActivity : BaseSplashAdsActivity() {
+
     override fun getLayoutView(): View {
         val relativeLayout = RelativeLayout(this)
         val progressBar = ProgressBar(this)
@@ -20,15 +27,29 @@ class MainActivity : BaseSplashAdsActivity() {
     }
 
     override fun onCompleteSucceed() {
-
+        Handler(Looper.getMainLooper()).postDelayed({
+            AdsUtils.loadAndShowAppOpenAd(
+                this,
+                "main_splash_app_open",
+                object : AppOpenAdShowedListener {
+                    override fun onCompleted() {
+                        startActivity(Intent(this@MainActivity, MainActivity2::class.java))
+                        finish()
+                    }
+                })
+        }, 1500)
     }
 
     override fun onCompleteFailed() {
 
     }
 
-    override fun getRemoteAdsKey(): String {
+    override fun getConfigAdsKey(): String {
         return getString(R.string.firebase_key)
+    }
+
+    override fun getConfigType(): ConfigType {
+        return ConfigType.REMOTE_CONFIG
     }
 
     override fun getDefaultAppOpenAdId(): String {
@@ -51,5 +72,6 @@ class MainActivity : BaseSplashAdsActivity() {
         super.onCreate(savedInstanceState)
 
         AdsApplication.setPremium(false)
+        AdsApplication.setHello(0)
     }
 }
