@@ -76,9 +76,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1792042c-fac5-4976-9d7a-47840ed4197e" name="Changes" comment="Firestore added">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1792042c-fac5-4976-9d7a-47840ed4197e" name="Changes" comment="Firestore added" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -234,22 +232,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1713422566307</updated>
-    </task>
-    <task id="LOCAL-00002" summary="init Code">
-      <option name="closed" value="true" />
-      <created>1713433380882</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1713433380882</updated>
-    </task>
-    <task id="LOCAL-00003" summary="init Code">
-      <option name="closed" value="true" />
-      <created>1713433395523</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1713433395523</updated>
     </task>
     <task id="LOCAL-00004" summary="init Code">
       <option name="closed" value="true" />
@@ -627,7 +609,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715146733582</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Firestore added">
+      <option name="closed" value="true" />
+      <created>1715147200195</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1715147200195</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Firestore added">
+      <option name="closed" value="true" />
+      <created>1715147215539</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1715147215540</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
