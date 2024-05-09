@@ -144,11 +144,6 @@ class AdsUtils {
                                     shimmerLayout.visibility = View.GONE
                                     frameLayout.visibility = View.GONE
                                 }
-                            } else {
-                                shimmerLayout.stopShimmer()
-                                crossBannerLayout.visibility = View.GONE
-                                shimmerLayout.visibility = View.GONE
-                                frameLayout.visibility = View.GONE
                             }
                         }
                     } else {
@@ -391,10 +386,6 @@ class AdsUtils {
                                     shimmerLayout.visibility = View.GONE
                                     frameLayout.visibility = View.GONE
                                 }
-                            } else {
-                                shimmerLayout.stopShimmer()
-                                shimmerLayout.visibility = View.GONE
-                                frameLayout.visibility = View.GONE
                             }
                         }
                     } else {
@@ -1198,8 +1189,6 @@ class AdsUtils {
                                         } else {
                                             interstitialAdShowedListener.onCompleted()
                                         }
-                                    } else {
-                                        interstitialAdShowedListener.onCompleted()
                                     }
                                 }
                             } else {
@@ -1286,8 +1275,6 @@ class AdsUtils {
                                             } else {
                                                 interstitialAdShowedListener.onCompleted()
                                             }
-                                        } else {
-                                            interstitialAdShowedListener.onCompleted()
                                         }
                                     }
                                 } else {
@@ -1383,8 +1370,6 @@ class AdsUtils {
                                         } else {
                                             interstitialAdShowedListener.onCompleted()
                                         }
-                                    } else {
-                                        interstitialAdShowedListener.onCompleted()
                                     }
                                 }
                             } else {
@@ -1466,8 +1451,6 @@ class AdsUtils {
                                             } else {
                                                 interstitialAdShowedListener.onCompleted()
                                             }
-                                        } else {
-                                            interstitialAdShowedListener.onCompleted()
                                         }
                                     }
                                 } else {
@@ -1582,8 +1565,6 @@ class AdsUtils {
                                     } else {
                                         interstitialAdShowedListener.onCompleted()
                                     }
-                                } else {
-                                    interstitialAdShowedListener.onCompleted()
                                 }
                             }
                         } else {
@@ -1681,8 +1662,6 @@ class AdsUtils {
                                         } else {
                                             appOpenAdShowedListener.onCompleted()
                                         }
-                                    } else {
-                                        appOpenAdShowedListener.onCompleted()
                                     }
                                 }
                             } else {
@@ -1755,8 +1734,6 @@ class AdsUtils {
                                     } else {
                                         appOpenAdShowedListener.onCompleted()
                                     }
-                                } else {
-                                    appOpenAdShowedListener.onCompleted()
                                 }
                             }
                         }
