@@ -1,0 +1,34 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color colorAccent
+color colorPrimary
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable shape_ad_button
+id adBanner
+id btnShowAd
+id main
+id native_ad_container
+layout activity_main
+layout activity_main2
+layout activity_main3
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string app_open_ads
+string banner_ads
+string firebase_key
+string gcm_defaultSenderId
+string google_api_key
+string google_app_id
+string google_crash_reporting_api_key
+string google_storage_bucket
+string inter_ads
+string native_ads
+string project_id
+style Base.Theme.MyApplication
+style Theme.MyApplication
+xml backup_rules
+xml data_extraction_rules

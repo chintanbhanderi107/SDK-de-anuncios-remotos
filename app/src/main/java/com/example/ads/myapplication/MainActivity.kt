@@ -4,9 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
-import android.widget.ProgressBar
-import android.widget.RelativeLayout
 import com.custom.ads.sdk.AdsApplication
 import com.custom.ads.sdk.BaseSplashAdsActivity
 import com.custom.ads.sdk.adsUtils.AdsUtils
@@ -14,17 +11,6 @@ import com.custom.ads.sdk.interfaces.AppOpenAdShowedListener
 import com.custom.ads.sdk.utils.ConfigType
 
 class MainActivity : BaseSplashAdsActivity() {
-
-    override fun getLayoutView(): View {
-        val relativeLayout = RelativeLayout(this)
-        val progressBar = ProgressBar(this)
-        val layoutParams = RelativeLayout.LayoutParams(100, 100)
-        layoutParams.addRule(14)
-        layoutParams.addRule(12)
-        layoutParams.setMargins(0, 0, 0, 50)
-        relativeLayout.addView(progressBar, layoutParams)
-        return relativeLayout
-    }
 
     override fun onCompleteSucceed() {
         Handler(Looper.getMainLooper()).postDelayed({

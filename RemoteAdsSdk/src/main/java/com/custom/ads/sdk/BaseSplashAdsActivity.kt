@@ -30,7 +30,6 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
         minimumFetchIntervalInSeconds = 0
     }
 
-    abstract fun getLayoutView(): View
     abstract fun onCompleteSucceed()
     abstract fun onCompleteFailed()
     abstract fun getConfigAdsKey(): String
@@ -42,7 +41,6 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutView())
 
         if (getConfigType() == ConfigType.REMOTE_CONFIG) {
             if (AdsApplication.isNetworkAvailable(this@BaseSplashAdsActivity)) {
