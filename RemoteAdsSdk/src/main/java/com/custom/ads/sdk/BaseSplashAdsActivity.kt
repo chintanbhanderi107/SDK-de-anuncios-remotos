@@ -76,6 +76,7 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
                         AdsUtils.loadInterstitialAd(this@BaseSplashAdsActivity)
 
                         onCompleteSucceed()
+                        Log.e("TAG", "isNetworkAvailable==> Success")
                     }
 
                     override fun onDataLoadFailed() {
@@ -85,6 +86,7 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
             } else {
                 Handler(Looper.getMainLooper()).postDelayed({
                     onCompleteSucceed()
+                    Log.e("TAG", "isNetworkAvailable==> UnSuccess")
                 }, 1500)
             }
         } else if (getConfigType() == ConfigType.FIRESTORE_DATABASE) {
@@ -119,6 +121,7 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
                         AdsUtils.loadInterstitialAd(this@BaseSplashAdsActivity)
 
                         onCompleteSucceed()
+                        Log.e("TAG", "isNetworkAvailable==> Success")
                     }
 
                     override fun onDataLoadFailed() {
@@ -128,6 +131,7 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
             } else {
                 Handler(Looper.getMainLooper()).postDelayed({
                     onCompleteSucceed()
+                    Log.e("TAG", "isNetworkAvailable==> UnSuccess")
                 }, 1500)
             }
         }
@@ -226,6 +230,7 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
                 AdsApplication.setAdsUnits(Gson().toJson(adsUnitList))
 
                 listener.onDataLoaded()
+                Log.e("TAG", "fetchDataSuccessful")
             } else {
                 listener.onDataLoadFailed()
                 Log.e("TAG", "fetchDataUnSuccessful")
@@ -431,10 +436,11 @@ abstract class BaseSplashAdsActivity : AppCompatActivity() {
                 AdsApplication.setAdsUnits(Gson().toJson(adsUnitList))
 
                 listener.onDataLoaded()
+                Log.e("TAG", "fetchDataSuccessful")
             }
         }.addOnFailureListener {
             listener.onDataLoadFailed()
-            Log.e("TAG", "initFireStoreData: ${it.message}")
+            Log.e("TAG", "fetchDataFailure: ${it.message}")
         }
     }
 
