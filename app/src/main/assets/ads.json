@@ -1,0 +1,133 @@
+{
+  "publisher_id": 1,
+  "updated_status": false,
+  "app_live_status": true,
+  "total_ad_show": null,
+  "publisher_name": "no",
+  "new_package": "photoalbumgallery.photomanager.securegallery",
+  "version_code": 1,
+  "show_ads": true,
+  "monthly_key": "pdf_monthly",
+  "yearly_key": "oneyear_latest",
+  "weekly_key": "weekly_offer_key",
+  "weekly_price": "199",
+  "monthly_price": "199",
+  "yearly_price": "1449",
+  "home_screen_ads": false,
+  "premium_first_time": true,
+  "updated_type": 0,
+  "back_press_ads": true,
+  "user_click_counter": 2,
+  "timing_ad": true,
+  "show_time": 5000,
+  "app_id": "photoalbumgallery.photomanager.securegallery",
+  "interstitial_ad_id": "/6499/example/interstitial",
+  "native": {
+    "ad_app_icon": "https://firebasestorage.googleapis.com/v0/b/remote-config-ads.appspot.com/o/unnamed.webp?alt=media&token=32b96d3e-c7d4-4208-9df0-380ce3e21e70",
+    "ad_call_to_action_url": "https://play.google.com/store/apps/details?id=videodownloder.statusdownloader.videoimagesaver",
+    "ad_call_to_action_text": "Install",
+    "ad_headline": "Gallery - Photo Editor & Vault",
+    "ad_body": "stay up to date",
+    "ad_media": "https://firebasestorage.googleapis.com/v0/b/all-video-downloader-vector.appspot.com/o/native.png?alt=media&token=4518b6bb-cbf6-4b0e-a0e3-6b7f88d2a9c3",
+    "info_url": "https://rubbysoft.blogspot.com/2020/06/privacy.html"
+  },
+  "banner": {
+    "ad_call_to_action_url": "https://play.google.com/store/apps/details?id=videodownloder.statusdownloader.videoimagesaver",
+    "ad_media": "https://firebasestorage.googleapis.com/v0/b/all-video-downloader-vector.appspot.com/o/banner.png?alt=media&token=c393214d-a38a-4ee5-9c15-c82196e9a318"
+  },
+  "interstitial": {
+    "ad_media": "https://firebasestorage.googleapis.com/v0/b/all-video-downloader-vector.appspot.com/o/interstitial.png?alt=media&token=6600732f-fdd0-4b20-be31-1deed93d25ca",
+    "ad_call_to_action_url": "https://play.google.com/store/apps/details?id=videodownloder.statusdownloader.videoimagesaver",
+    "ad_headline": "TEST AD",
+    "info_url": "https://rubbysoft.blogspot.com/2020/06/privacy.html"
+  },
+  "openapp": {
+    "ad_media": "https://firebasestorage.googleapis.com/v0/b/all-video-downloader-vector.appspot.com/o/openApp.webp?alt=media&token=77a62bcb-c8fd-449e-9020-6f2735f0496a",
+    "ad_app_icon": "https://firebasestorage.googleapis.com/v0/b/all-video-downloader-vector.appspot.com/o/appLogo.webp?alt=media&token=3ffad0ef-a2f5-4601-958c-a86171a2844c",
+    "ad_call_to_action_url": "https://play.google.com/store/apps/details?id=videodownloder.statusdownloader.videoimagesaver",
+    "ad_headline": "TEST AD",
+    "info_url": "https://rubbysoft.blogspot.com/2020/06/privacy.html"
+  },
+  "ad_units": [
+    {
+      "adsName": "main_banner",
+      "idAds": "ca-app-pub-3940256099942544/9214589741",
+      "adsType": "banner",
+      "enableAds": true,
+      "frequency": 2,
+      "adFailed": "cross_promotion",
+      "publishers": "ad_unit",
+      "adsLayout": "one"
+    },
+    {
+      "adsName": "main_native",
+      "idAds": "/6499/example/native",
+      "adsType": "native",
+      "enableAds": true,
+      "frequency": 3,
+      "adFailed": "cross_promotion",
+      "publishers": "cross_promotion",
+      "adsLayout": "four"
+    },
+    {
+      "adsName": "main_native_3",
+      "idAds": "/6499/example/native",
+      "adsType": "native",
+      "enableAds": true,
+      "frequency": 2,
+      "adFailed": "cross_promotion",
+      "publishers": "ad_unit",
+      "adsLayout": "one"
+    },
+    {
+      "adsName": "main_interstitial",
+      "idAds": "/6499/example/interstitial",
+      "adsType": "interstitial",
+      "enableAds": true,
+      "frequency": 2,
+      "adFailed": "cross_promotion",
+      "publishers": "ad_unit",
+      "adsLayout": "one"
+    },
+    {
+      "adsName": "main_interstitial_back",
+      "idAds": "/6499/example/interstitial",
+      "adsType": "interstitial",
+      "enableAds": false,
+      "frequency": 2,
+      "adFailed": "cross_promotion",
+      "publishers": "ad_unit",
+      "adsLayout": "one"
+    },
+    {
+      "adsName": "main_splash_app_open",
+      "idAds": "ca-app-pub-3940256099942544/9257395921",
+      "adsType": "appopen",
+      "enableAds": true,
+      "frequency": 2,
+      "adFailed": "cross_promotion",
+      "publishers": "ad_unit",
+      "adsLayout": "one"
+    },
+    {
+      "adsName": "on_resume_open_app",
+      "idAds": "ca-app-pub-3940256099942544/9257395921",
+      "adsType": "appopen",
+      "enableAds": true,
+      "frequency": 2,
+      "adFailed": "no",
+      "publishers": "ad_unit",
+      "adsLayout": "one"
+    },
+    {
+      "adsName": "demo_inter",
+      "idAds": "/6499/example/interstitial",
+      "adsType": "interstitial",
+      "enableAds": true,
+      "frequency": 2,
+      "adFailed": "cross_promotion",
+      "publishers": "ad_unit",
+      "adsLayout": "one"
+    }
+  ]
+}

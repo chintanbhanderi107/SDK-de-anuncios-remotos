@@ -7,7 +7,7 @@
         android:id="@+id/shimmerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <com.google.android.gms.ads.nativead.NativeAdView
             android:layout_width="match_parent"
@@ -103,7 +103,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/insta_back"
+                    android:background="@drawable/shape_ad_button"
                     android:backgroundTint="@color/shimmerColor"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
